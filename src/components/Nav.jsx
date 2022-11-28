@@ -1,23 +1,40 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/images/skiarenalogo.svg";
+import Logo from "../assets/images/skiarenalogo.svg";
+import Arrow from "../assets/images/Arrow.svg";
 
 export default function Nav() {
 	return (
 		<>
 			<nav id='navigation'>
 				<Link id='logoWrapper' to={"/"}>
-					<img id='logoNav' src={logo} alt='logo' />
+					<img id='logoNav' src={Logo} alt='logo' />
 				</Link>
 				<div id='nav'>
-					<p className='menuLink'>Lokation</p>
-					<p className='menuLink'>kurser</p>
-					<p className='menuLink'>Arrangementer</p>
+					<div className='menuItem'>
+						<p className='menuLink'>Kurser</p>
+						<img src={Arrow} alt='Dropdown' />
+					</div>
+					<div className='menuItem'>
+						<p className='menuLink'>Lektioner</p>
+						<img src={Arrow} alt='Dropdown' />
+						<div className='dropdownMenu'>
+							<NavLink to={"/kurser/familie"}>Familie</NavLink>
+							<NavLink to={"/kurser/Gruppe"}>Gruppe</NavLink>
+						</div>
+					</div>
+					<div className='menuItem'>
+						<p className='menuLink'>Arrangementer</p>
+						<img src={Arrow} alt='Dropdown' />
+					</div>
 					<NavLink className='menuLink' to={"/priser"}>
 						Priser
 					</NavLink>
 					<p className='menuLink'>Gavekort</p>
-					<p className='menuLink'>Om os</p>
+					<div className='menuItem'>
+						<p className='menuLink'>Om os</p>
+						<img src={Arrow} alt='Dropdown' />
+					</div>
 				</div>
 				<div id='bookButton'>
 					<Link className='ctaButton' to={"/"}>
