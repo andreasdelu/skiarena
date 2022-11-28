@@ -1,1 +1,31 @@
 @use "Main";
+
+/* HOMEPAGE STYLING */
+
+#homeWrap {
+	#homeHero {
+		width: 100vw;
+		height: 70vh;
+		position: relative;
+		#heroVideo {
+			height: 100%;
+			object-fit: cover;
+			width: 100%;
+		}
+		.videoOverlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+
+			.overlayContent {
+				height: 70%;
+				display: flex;
+				.overlayLeft {
+				}
+			}
+		}
+	}
+}
