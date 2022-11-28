@@ -1,1 +1,48 @@
 @use "Main";
+
+/* NAV STYLING */
+
+#navigation {
+	box-sizing: border-box;
+	padding: 0 50px;
+	display: flex;
+	height: 70px;
+	align-items: center;
+	justify-content: space-between;
+	width: 100vw;
+
+	#nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 50%;
+	}
+
+	#logoNav {
+		height: 100%;
+		width: auto;
+	}
+
+	#logoWrapper {
+		width: 170px;
+		display: block;
+		height: 50px;
+	}
+
+	#bookButton {
+		width: 170px;
+
+		.ctaButton {
+			margin-left: auto;
+		}
+	}
+
+	.menuLink {
+		cursor: pointer;
+		text-decoration: none;
+		color: black;
+		&:hover {
+			color: Main.$blue;
+		}
+	}
+}
