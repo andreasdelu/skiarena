@@ -63,7 +63,27 @@ body {
 	font-family: "heebo", "sans-serif";
 	font-size: 1rem;
 	font-weight: 300;
-	overscroll-behavior-y: none;
+	/* overscroll-behavior-y: none; */
+	overflow-x: hidden;
+}
+
+* {
+	font-family: "heebo", "sans-serif";
+}
+
+#mainContent {
+	width: 100%;
+	padding-bottom: 50px;
+	background-color: white;
+}
+
+.pageTitle {
+	font-size: 2rem;
+	text-align: center;
+}
+
+p {
+	line-height: 1.4rem;
 }
 
 .ctaButton {
@@ -80,4 +100,14 @@ body {
 	&:hover {
 		background-color: #68acdc;
 	}
+}
+
+textarea {
+	resize: none;
+	font-family: "heebo", "sans-serif";
+	font-weight: 300;
+}
+
+button {
+	border: none;
 }

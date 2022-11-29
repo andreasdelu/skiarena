@@ -6,10 +6,10 @@
 	#homeHero {
 		width: 100vw;
 		height: 100vh;
-		position: fixed;
+		position: sticky;
 		top: 0px;
 		left: 0;
-		z-index: -1;
+		z-index: 0;
 		#heroVideo {
 			height: 100%;
 			object-fit: cover;
@@ -61,14 +61,17 @@
 	.homeSection {
 		background-color: white;
 		position: relative;
-		min-height: 120vh;
+		min-height: 90vh;
 	}
 
 	.sectionTitle {
 		text-align: center;
-		font-size: 2rem;
-		padding-top: 5rem;
+		font-size: 2.2rem;
+		padding-top: 4rem;
+		margin-top: 0;
 		display: block;
+		z-index: 1;
+		position: relative;
 	}
 
 	.sectionDivider {
@@ -79,15 +82,108 @@
 		isolation: isolate;
 		display: flex;
 		justify-content: center;
-		z-index: -1;
 		img {
 			width: 130%;
 		}
 	}
 
 	#topHomeSection {
-		margin-top: calc(0px + 90vh);
 		display: block;
 		width: 100%;
 	}
+
+	.bgSection {
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		padding: 50px 0;
+
+		.sectionTitle {
+			color: white;
+			padding-top: 3rem;
+		}
+	}
+
+	#contactWrap {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		#contactForm {
+			max-width: 500px;
+			width: 100%;
+			box-sizing: border-box;
+			padding: 25px;
+			display: flex;
+			gap: 25px;
+			flex-direction: column;
+			background-color: white;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			border-radius: 20px;
+
+			label {
+				outline: 1px solid rgb(180, 180, 180);
+				display: flex;
+				position: relative;
+				padding: 5px;
+				padding-left: 0.5rem;
+				border-radius: 5px;
+
+				p {
+					color: rgb(180, 180, 180);
+					font-size: 0.8rem;
+					height: 14px;
+					position: absolute;
+					top: -0.7rem;
+					left: 0.5rem;
+					margin: 0;
+					background-color: white;
+					padding: 0 0.3rem;
+					isolation: isolate;
+					z-index: 10;
+				}
+
+				input {
+					width: 100%;
+					border: none;
+					font-size: 1rem;
+					font-weight: 300 !important;
+
+					&:focus {
+						outline: none;
+					}
+				}
+			}
+
+			#telMail {
+				display: flex;
+				gap: 50px;
+				label {
+					width: 50%;
+				}
+			}
+			#contactTel {
+				flex-grow: 0.5;
+			}
+			#contactMail {
+				flex-grow: 0.5;
+			}
+
+			textarea {
+				width: 100%;
+				border: none;
+				font-size: 1rem;
+				min-height: 7rem;
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+	}
+}
+
+#cookieWrap {
+	width: 100%;
+	margin: 0 auto;
+	max-width: 600px;
+	margin-top: 120px;
 }

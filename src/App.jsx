@@ -4,16 +4,22 @@ import "./scss/Main.css";
 import "./scss/Pages.css";
 import "./scss/Components.css";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import Cookies from "./pages/Cookies";
+import ScrollToTop from "./components/ScrollToTop";
 
-function App() {
+export default function App() {
 	return (
 		<BrowserRouter>
+			<ScrollToTop />
 			<Nav />
-			<Routes>
-				<Route path='/' element={<Home />} />
-			</Routes>
+			<div id='mainContent'>
+				<Routes>
+					<Route path='/' element={<Home />} />
+					<Route path='/cookies' element={<Cookies />} />
+				</Routes>
+			</div>
+			<Footer />
 		</BrowserRouter>
 	);
 }
-
-export default App;
