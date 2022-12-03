@@ -6,6 +6,10 @@ import divider from "../assets/images/divider.svg";
 import bluebg from "../assets/images/bluebg.svg";
 import { Link } from "react-router-dom";
 
+import ski from "../assets/images/ski-placeholder.jpeg";
+import ski2 from "../assets/images/ski-placeholder-2.jpeg";
+import ImageClickable from "../components/ImageClickable";
+
 export default function Home() {
 	function handleContactSubmit(e) {
 		e.preventDefault();
@@ -35,7 +39,9 @@ export default function Home() {
 									På ski hele året? Det er muligt i SkiArena! Vi har åbent året
 									rundt så du ikke skal savne skiløbet
 								</p>
-								<Link className='ctaButton'>Book nu</Link>
+								<Link className='ctaButton' to={"/booking"}>
+									Book nu
+								</Link>
 							</div>
 						</div>
 					</div>
@@ -50,10 +56,66 @@ export default function Home() {
 				</div>
 				<div
 					className='homeSection bgSection'
-					style={{ backgroundImage: `url(${bluebg})` }}>
+					style={{
+						backgroundImage: `url(${bluebg})`,
+						backgroundPositionX: "100vw",
+					}}>
 					<h2 className='sectionTitle'>Hurtige links</h2>
 				</div>
 				<div className='homeSection'>
+					<h2 className='sectionTitle'>Billeder</h2>
+					<div className='homeImages'>
+						<ImageClickable
+							src={ski2}
+							title='Test'
+							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
+					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
+					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
+						/>
+						<ImageClickable
+							src={ski2}
+							title='Test'
+							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
+					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
+					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
+						/>
+
+						<ImageClickable
+							src={ski}
+							title='Test'
+							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
+					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
+					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
+						/>
+						<ImageClickable
+							src={ski2}
+							title='Test'
+							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
+					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
+					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
+						/>
+						<ImageClickable
+							src={ski2}
+							title='Test'
+							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
+					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
+					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
+						/>
+						<ImageClickable
+							src={ski}
+							title='Test'
+							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
+					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
+					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
+						/>
+					</div>
+				</div>
+				<div
+					className='homeSection bgSection'
+					style={{
+						backgroundImage: `url(${bluebg})`,
+						backgroundPositionX: "50vw",
+					}}>
 					<h2 className='sectionTitle'>Åbningstider</h2>
 				</div>
 				<div className='homeSection'>
@@ -114,6 +176,22 @@ export default function Home() {
 								Send besked
 							</button>
 						</form>
+						<div id='mapCard'>
+							<iframe
+								id='googleMap'
+								title='map'
+								style={{ border: 0 }}
+								loading='lazy'
+								allowFullScreen
+								referrerPolicy='no-referrer-when-downgrade'
+								src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS_API}&q=SkiArena+Aarhus`}></iframe>
+							<div className='mapInfo'>
+								<p>
+									SkiArena Aarhus <br /> Hasselager Centervej 30 <br /> 8260,
+									Viby J
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
