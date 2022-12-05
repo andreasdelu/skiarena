@@ -9,6 +9,7 @@ import Cookies from "./pages/Cookies";
 import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
+
 	return (
 		<BrowserRouter>
 			<ScrollToTop />

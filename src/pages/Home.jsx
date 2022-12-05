@@ -5,6 +5,8 @@ import logo from "../assets/images/skiarenalogo-white.svg";
 import divider from "../assets/images/divider.svg";
 import bluebg from "../assets/images/bluebg.svg";
 import { Link } from "react-router-dom";
+import Card from "../components/Card"; 
+import data from "../data"
 
 export default function Home() {
 	function handleContactSubmit(e) {
@@ -15,6 +17,16 @@ export default function Home() {
 		console.log(e.target.contactCompany.value);
 		console.log(e.target.contactMessage.value);
 	}
+
+	const cards = data.map(item => {
+        return (
+            <Card
+                key={item.id}
+                {...item}
+                
+            />
+        )
+    }) 
 
 	return (
 		<>
@@ -47,6 +59,9 @@ export default function Home() {
 					<h2 className='sectionTitle'>
 						Kurser og lektioner for familier, enkelte og firmaer
 					</h2>
+					<section className="cards-list">
+                		{cards}
+            		</section>
 				</div>
 				<div
 					className='homeSection bgSection'
