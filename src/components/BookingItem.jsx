@@ -69,12 +69,24 @@ export default function BookingItem() {
 	}
 
 	function CalendarDate({ date, name, onClick }) {
+		let classes = "calendarDate";
+		if (
+			currentMonth === currentDate.month &&
+			currentYear === currentDate.year
+		) {
+			if (date < currentDate.day) {
+				classes = "calendarDate invalidDate";
+			}
+			if (date === currentDate.day) {
+				classes = "calendarDate currentDate";
+			}
+		}
 		return (
 			<>
-				<div onClick={onClick} className='calendarDate'>
+				<div onClick={onClick} className={classes}>
 					<div className='dateWrap'>
-						<p>{date}</p>
 						<p>{name}</p>
+						<p>{date}</p>
 					</div>
 				</div>
 			</>
@@ -121,7 +133,11 @@ export default function BookingItem() {
 			setCurrentYear(currentYear + 1);
 		} else {
 			if (currentYear - 1 <= 0) {
+				return;
 			} else {
+				if (currentYear - 1 < currentDate.year) {
+					return;
+				}
 				setCurrentYear(currentYear - 1);
 			}
 		}
@@ -135,8 +151,15 @@ export default function BookingItem() {
 				setCurrentMonth(currentMonth + 1);
 			}
 		} else {
+			if (
+				currentYear === currentDate.year &&
+				currentMonth - 1 < currentDate.month
+			) {
+				return;
+			}
 			if (currentMonth - 1 < 0) {
 				setCurrentMonth(11);
+				setCurrentYear(currentYear - 1);
 			} else {
 				setCurrentMonth(currentMonth - 1);
 			}

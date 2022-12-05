@@ -35,6 +35,7 @@ import FindVej from "./pages/om/FindVej";
 import Job from "./pages/om/Job";
 import Kontakt from "./pages/om/Kontakt";
 import Presse from "./pages/om/Presse";
+import Betingelser from "./pages/om/Betingelser";
 
 export default function App() {
 	return (
@@ -182,6 +183,15 @@ export default function App() {
 					<Route
 						path='/presse'
 						element={<PageLayout content={<Presse />} title={"Presse"} />}
+					/>
+					<Route
+						path='/betingelser'
+						element={
+							<PageLayout
+								content={<Betingelser />}
+								title={"Betingelser for booking"}
+							/>
+						}
 					/>
 				</Routes>
 			</div>

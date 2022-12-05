@@ -80,7 +80,7 @@ body {
 .pageTitle {
 	font-size: 2rem;
 	text-align: center;
-	margin: 25px 0;
+	margin: 0 0 25px 0;
 }
 
 p {
@@ -137,6 +137,12 @@ th {
 thead {
 	background-color: $blue;
 	color: white;
+}
+
+tbody {
+	tr:nth-child(odd) {
+		background-color: #f4fbff;
+	}
 }
 
 td,

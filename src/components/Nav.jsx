@@ -52,6 +52,15 @@ export default function Nav() {
 		}
 	}
 
+	function closeDropdown(e) {
+		if (e.target.tagName === "A") {
+			setDrop1(false);
+			setDrop2(false);
+			setDrop3(false);
+			setDrop4(false);
+		}
+	}
+
 	return (
 		<>
 			<nav
@@ -74,7 +83,7 @@ export default function Nav() {
 						<p className='menuLink'>Kurser</p>
 						<img src={Arrow} alt='Dropdown' />
 						{drop1 && (
-							<div className='dropdownMenu'>
+							<div onClick={closeDropdown} className='dropdownMenu'>
 								<NavLink to={"/kurser/intro"}>Introkursus</NavLink>
 								<NavLink to={"/kurser/basis"}>Basiskursus</NavLink>
 								<NavLink to={"/kurser/mini"}>Minikursus</NavLink>
@@ -91,7 +100,7 @@ export default function Nav() {
 						<p className='menuLink'>Lektioner</p>
 						<img src={Arrow} alt='Dropdown' />
 						{drop2 && (
-							<div className='dropdownMenu'>
+							<div onClick={closeDropdown} className='dropdownMenu'>
 								<NavLink to={"/lektioner/enkelt"}>Enkeltlektion</NavLink>
 								<NavLink to={"/lektioner/personlig"}>Personlig Lektion</NavLink>
 								<NavLink to={"/lektioner/familie"}>Familielektion</NavLink>
@@ -113,7 +122,7 @@ export default function Nav() {
 						<p className='menuLink'>Arrangementer</p>
 						<img src={Arrow} alt='Dropdown' />
 						{drop3 && (
-							<div className='dropdownMenu'>
+							<div onClick={closeDropdown} className='dropdownMenu'>
 								<NavLink to={"/arrangementer/firma"}>Firmaarrangement</NavLink>
 								<NavLink to={"/arrangementer/polterabend"}>Polterabend</NavLink>
 								<NavLink to={"/arrangementer/blaa-mandag"}>Blå Mandag</NavLink>
@@ -137,12 +146,13 @@ export default function Nav() {
 						<p className='menuLink'>Om os</p>
 						<img src={Arrow} alt='Dropdown' />
 						{drop4 && (
-							<div className='dropdownMenu'>
+							<div onClick={closeDropdown} className='dropdownMenu'>
 								<NavLink to={"/faq"}>FAQ</NavLink>
 								<NavLink to={"/kontakt"}>Kontakt</NavLink>
 								<NavLink to={"/find-vej"}>Find vej</NavLink>
 								<NavLink to={"/job"}>Job</NavLink>
 								<NavLink to={"/presse"}>Presse</NavLink>
+								<NavLink to={"/betingelser"}>Betingelser</NavLink>
 							</div>
 						)}
 					</div>

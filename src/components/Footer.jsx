@@ -5,6 +5,8 @@ import fb from "../assets/images/fb.svg";
 import insta from "../assets/images/insta.svg";
 import linkedin from "../assets/images/linkedin.svg";
 import yt from "../assets/images/yt.svg";
+import phone from "../assets/images/phone.svg";
+import mail from "../assets/images/mail.svg";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -17,8 +19,15 @@ export default function Footer() {
 				<div className='footerWrap'>
 					<div className='footerLeft footerSection'>
 						<h6>Kontakt</h6>
-						<a href='tel:+4525948777'>25 94 87 77</a>
-						<a href='mailto:info@skiarena.dk'>info@skiarena.dk</a>
+						<div className='contactIcon'>
+							<img src={phone} alt='phone' />
+							<a href='tel:+4525948777'>25 94 87 77</a>
+						</div>
+						<div className='contactIcon'>
+							<img src={mail} alt='mail' />
+
+							<a href='mailto:info@skiarena.dk'>info@skiarena.dk</a>
+						</div>
 						<div className='socialLinks'>
 							<a href='http://www.facebook.com/skiarena'>
 								<img src={fb} alt='facebook logo' />
