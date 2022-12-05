@@ -80,6 +80,7 @@ body {
 .pageTitle {
 	font-size: 2rem;
 	text-align: center;
+	margin: 0 0 25px 0;
 }
 
 p {
@@ -96,6 +97,7 @@ p {
 	font-weight: 800;
 	display: block;
 	width: fit-content;
+	white-space: nowrap;
 
 	&:hover {
 		background-color: #68acdc;
@@ -110,4 +112,61 @@ textarea {
 
 button {
 	border: none;
+	cursor: pointer;
+}
+
+table {
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+}
+
+table,
+th,
+td {
+	border: 1px solid rgb(240, 240, 240);
+	border-collapse: collapse;
+	text-align: left;
+}
+
+th {
+	border: 1px solid white;
+	font-size: 1.1rem;
+}
+
+thead {
+	background-color: $blue;
+	color: white;
+}
+
+tbody {
+	tr:nth-child(odd) {
+		background-color: #f4fbff;
+	}
+}
+
+td,
+th {
+	padding: 0.8rem 1rem;
+
+	a {
+		color: $blue;
+	}
+}
+
+ul {
+	list-style: none;
+	padding-left: 1rem;
+}
+li {
+	margin: 0.5rem 0;
+}
+
+ul li::before {
+	content: "\2022";
+	color: $blue;
+	font-weight: bold;
+	display: inline-block;
+	width: 1em;
+	margin-left: -1em;
 }

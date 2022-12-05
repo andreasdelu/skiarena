@@ -61,7 +61,8 @@
 	.homeSection {
 		background-color: white;
 		position: relative;
-		min-height: 90vh;
+		min-height: 80vh;
+		width: 100%;
 	}
 
 	.sectionTitle {
@@ -93,9 +94,9 @@
 	}
 
 	.bgSection {
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
+		background-position: left;
+		background-size: 190vh;
+		background-repeat: repeat-x;
 		padding: 50px 0;
 
 		.sectionTitle {
@@ -108,13 +109,17 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		height: 500px;
+		gap: 50px;
+		margin: 0 50px;
 		#contactForm {
 			max-width: 500px;
 			width: 100%;
+			height: 500px;
 			box-sizing: border-box;
 			padding: 25px;
 			display: flex;
-			gap: 25px;
+			gap: 30px;
 			flex-direction: column;
 			background-color: white;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -178,12 +183,128 @@
 				}
 			}
 		}
+		#mapCard {
+			max-width: 350px;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			background-color: white;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			border-radius: 20px;
+
+			#googleMap {
+				width: 100%;
+				height: 100%;
+			}
+
+			.mapInfo {
+				margin-left: 20px;
+			}
+		}
+	}
+
+	.homeImages {
+		display: grid;
+		width: 80vw;
+		max-width: 1100px;
+		max-height: 650px;
+		height: 40vw;
+		margin: 0 auto;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		gap: 5px;
+		padding-bottom: 50px;
+		position: relative;
+
+		.imageClickable {
+			transition: 0.4s;
+			border-radius: 5px;
+			cursor: pointer;
+			aspect-ratio: 1;
+
+			&:first-child {
+				grid-row: span 2;
+				aspect-ratio: none;
+			}
+			&:nth-child(3) {
+				grid-column: span 2;
+				aspect-ratio: none;
+			}
+
+			&:hover {
+				transform: scale(1.01);
+				filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+			}
+		}
 	}
 }
 
 #cookieWrap {
 	width: 100%;
 	margin: 0 auto;
-	max-width: 600px;
+	max-width: 800px;
+	box-sizing: border-box;
 	margin-top: 120px;
+	padding: 0 50px;
+}
+
+#pricesWrap {
+	display: flex;
+	margin: 120px auto 0 auto;
+	align-items: center;
+	flex-direction: column;
+	max-width: 800px;
+
+	.pricesContent {
+		margin: 0 50px;
+	}
+
+	.pageTitle {
+		margin-bottom: 0;
+	}
+
+	table {
+		width: 100%;
+
+		margin-top: 50px;
+
+		.priceCol {
+			width: 100px;
+		}
+	}
+
+	.pricesInfo {
+		margin-top: 50px;
+	}
+}
+
+#bookingWrap {
+	margin-top: 120px;
+}
+
+.pageWrap {
+	margin: 0 auto;
+	margin-top: 120px;
+	max-width: 800px;
+	box-sizing: border-box;
+	padding: 0 50px;
+
+	.pageInfoWrap {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.pageInfoImage {
+		width: 100%;
+		height: 300px;
+		background-position: top;
+		background-size: cover;
+		background-repeat: no-repeat;
+		border-radius: 10px;
+		margin-bottom: 25px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
 }
