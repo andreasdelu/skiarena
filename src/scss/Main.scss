@@ -104,6 +104,24 @@ p {
 	}
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+select {
+	border: none;
+	font-weight: 500;
+
+	&:focus {
+		outline: none;
+	}
+}
+
 textarea {
 	resize: none;
 	font-family: "heebo", "sans-serif";
@@ -169,4 +187,11 @@ ul li::before {
 	display: inline-block;
 	width: 1em;
 	margin-left: -1em;
+}
+
+.asterisk {
+	font-size: 0.7rem;
+	color: $blue;
+	position: relative;
+	top: -5px;
 }

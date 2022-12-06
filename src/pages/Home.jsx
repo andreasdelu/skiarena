@@ -5,14 +5,14 @@ import logo from "../assets/images/skiarenalogo-white.svg";
 import divider from "../assets/images/divider.svg";
 import bluebg from "../assets/images/bluebg.svg";
 import { Link } from "react-router-dom";
-import Card from "../components/Card"; 
-import data from "../data"
+import Card from "../components/Card";
 
 import ski from "../assets/images/ski-placeholder.jpeg";
 import ski2 from "../assets/images/ski-placeholder-2.jpeg";
 import ImageClickable from "../components/ImageClickable";
 
 export default function Home() {
+	document.title = "SkiArena";
 	function handleContactSubmit(e) {
 		e.preventDefault();
 		console.log(e.target.contactName.value);
@@ -21,16 +21,6 @@ export default function Home() {
 		console.log(e.target.contactCompany.value);
 		console.log(e.target.contactMessage.value);
 	}
-
-	const cards = data.map(item => {
-        return (
-            <Card
-                key={item.id}
-                {...item}
-                
-            />
-        )
-    }) 
 
 	return (
 		<>
@@ -65,9 +55,35 @@ export default function Home() {
 					<h2 className='sectionTitle'>
 						Kurser og lektioner for familier, enkelte og firmaer
 					</h2>
-					<section className="cards-list">
-                		{cards}
-            		</section>
+					<section className='cards-list'>
+						<Card
+							link={"/kurser"}
+							coverImg={
+								"https://www.skisport.dk/img/55d5ca02988f8_skisport_dk.jpg"
+							}
+							title={"Kurser"}
+							description={"Wow kurser er ok swag"}
+							price={"Fra 550 kr."}
+						/>
+						<Card
+							link={"/lektioner"}
+							coverImg={
+								"https://funguide.dk/wp-content/uploads/2014/09/indoor-ski.jpg"
+							}
+							title={"Lektioner"}
+							description={""}
+							price={"Fra 375 kr."}
+						/>
+						<Card
+							link={"/arrangementer"}
+							coverImg={
+								"https://www.skisport.dk/img/55d5c9be6ab21_skisport_dk.jpg"
+							}
+							title={"Arrangementer"}
+							description={""}
+							price={"Fra 200 kr."}
+						/>
+					</section>
 				</div>
 				<div
 					className='homeSection bgSection'

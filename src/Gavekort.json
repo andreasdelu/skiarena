@@ -1,0 +1,74 @@
+[
+	{
+		"id": 0,
+		"name": "Værdi efter eget ønske <br /> (min. 200 kr.)",
+		"price": {
+			"custom": true,
+			"low": 200,
+			"high": 0
+		}
+	},
+	{
+		"id": 1,
+		"name": "Gavekort til Basiskursus",
+		"price": {
+			"custom": false,
+			"low": 750,
+			"high": 850
+		}
+	},
+	{
+		"id": 2,
+		"name": "Gavekort til Snowboardlektion",
+		"price": {
+			"custom": false,
+			"low": 350,
+			"high": 0
+		}
+	},
+	{
+		"id": 3,
+		"name": "Klippekort Familie Kursus - <br /> 5x (I alt for 2 voksne / 4 børn)",
+		"price": {
+			"custom": false,
+			"low": 3750,
+			"high": 4250
+		}
+	},
+	{
+		"id": 4,
+		"name": "Gavekort til Familielektion",
+		"price": {
+			"custom": false,
+			"low": 750,
+			"high": 850
+		}
+	},
+	{
+		"id": 5,
+		"name": "Gavekort til Personlig Lektion",
+		"price": {
+			"custom": false,
+			"low": 750,
+			"high": 850
+		}
+	},
+	{
+		"id": 6,
+		"name": "Gavekort til Prøvelektion - <br /> 2 pers.",
+		"price": {
+			"custom": false,
+			"low": 550,
+			"high": 0
+		}
+	},
+	{
+		"id": 7,
+		"name": "Gavekort til Introkursus - <br /> 2 lektioner",
+		"price": {
+			"custom": false,
+			"low": 550,
+			"high": 0
+		}
+	}
+]

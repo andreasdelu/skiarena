@@ -6,17 +6,6 @@ import PageInfo from "../../components/PageInfo";
 export default function MiniKursus() {
 	return (
 		<>
-			<div
-				style={{ backgroundImage: `url(${image})` }}
-				className='pageInfoImage'></div>
-			<PageInfo
-				price={"750 kr. pr. person (Højsæson: 850 kr)"}
-				duration={"3 lektioner på 90 minutter"}
-				level={"Let øvet - Øvet"}
-				type={"Ski"}
-				link={"introkursus"}
-			/>
-			<h3>Information</h3>
 			<p>
 				For dig der skal have støvet sommeren rust af, og køre dig klar til din
 				store skiferie. Mini-kurset kører fra 3 gange til lige så mange gange du

@@ -3,6 +3,11 @@ import Home from "./pages/Home";
 import "./scss/Main.css";
 import "./scss/Pages.css";
 import "./scss/Components.css";
+
+import PageLayout from "./layouts/PageLayout";
+import PageLayout2 from "./layouts/PageLayout2";
+import CourseLayout from "./layouts/CourseLayout";
+
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Cookies from "./pages/Cookies";
@@ -10,15 +15,16 @@ import ScrollToTop from "./components/ScrollToTop";
 import Prices from "./pages/Prices";
 import Booking from "./pages/Booking";
 import Gavekort from "./pages/Gavekort";
-import PageLayout from "./layouts/PageLayout";
 import IntroKursus from "./pages/kursus/IntroKursus";
 import BasisKursus from "./pages/kursus/BasisKursus";
 import MiniKursus from "./pages/kursus/MiniKursus";
 import FamilieKursus from "./pages/kursus/FamilieKursus";
 import DDSKursus from "./pages/kursus/DDSKursus";
 import TeknikKursus from "./pages/kursus/TeknikKursus";
+import FirmaKursus from "./pages/kursus/FirmaKursus";
 
 import EnkeltLektion from "./pages/lektioner/EnkeltLektion";
+import TrePaaBaandLektion from "./pages/lektioner/TrePaaBaandLektion";
 import FamilieLektion from "./pages/lektioner/FamilieLektion";
 import GruppeLektion from "./pages/lektioner/GruppeLektion";
 import PersonligLektion from "./pages/lektioner/PersonligLektion";
@@ -36,9 +42,36 @@ import Job from "./pages/om/Job";
 import Kontakt from "./pages/om/Kontakt";
 import Presse from "./pages/om/Presse";
 import Betingelser from "./pages/om/Betingelser";
+import Kurser from "./pages/Kurser";
+import Lektioner from "./pages/Lektioner";
+import Arrangementer from "./pages/Arrangementer";
+import { useEffect, useState } from "react";
+import { fetchWPData } from "./services/wpFetcher";
+import PageInfo from "./components/PageInfo";
 
 export default function App() {
+	const [pageData, setPageData] = useState([]);
 
+	async function getData() {
+		const res = await fetch(
+			"https://skiarena-admin.delu.dk/wp-json/wp/v2/posts?_embed"
+		);
+		const data = await res.json();
+
+		let dataArray = [];
+		data.forEach((post) => {
+			let dataObject = {
+				slug: post.slug,
+				image: post._embedded["wp:featuredmedia"][0].source_url,
+			};
+			dataArray.push(dataObject);
+		});
+		setPageData(dataArray);
+	}
+
+	useEffect(() => {
+		getData();
+	}, []);
 	return (
 		<BrowserRouter>
 			<ScrollToTop />
@@ -46,122 +79,394 @@ export default function App() {
 			<div id='mainContent'>
 				<Routes>
 					<Route path='/' element={<Home />} />
+					<Route path='/kurser' element={<Kurser />} />
+					<Route path='/lektioner' element={<Lektioner />} />
+					<Route path='/arrangementer' element={<Arrangementer />} />
 					<Route path='/cookies' element={<Cookies />} />
 					<Route path='/priser' element={<Prices />} />
 					<Route path='/booking' element={<Booking />} />
 					<Route path='/gavekort' element={<Gavekort />} />
+
+					{/* <Route
+						path='/kurser/:page'
+						element={<PageLayout pageData={pageData} />}
+					/> */}
 					<Route
 						path='/kurser/intro'
 						element={
-							<PageLayout content={<IntroKursus />} title={"Introkursus"} />
+							<CourseLayout
+								data={pageData}
+								content={<IntroKursus />}
+								title={"Introkursus"}
+								info={
+									<PageInfo
+										priceLow={"550 kr."}
+										priceHigh={"550 kr."}
+										persons={"1 person"}
+										duration={"2 lektioner på 90 minutter"}
+										level={"Nybegynder"}
+										type={"Ski"}
+										link={"introkursus"}
+									/>
+								}
+							/>
 						}
 					/>
 					<Route
 						path='/kurser/basis'
 						element={
-							<PageLayout content={<BasisKursus />} title={"Basiskursus"} />
+							<CourseLayout
+								data={pageData}
+								content={<BasisKursus />}
+								title={"Basiskursus"}
+								info={
+									<PageInfo
+										priceLow='750 kr.'
+										priceHigh='850 kr.'
+										persons='1 person'
+										duration='3 lektioner på 90 minutter'
+										level='Nybegynder - Øvet'
+										type='Ski'
+										link='basiskursus'
+									/>
+								}
+							/>
 						}
 					/>
 					<Route
 						path='/kurser/mini'
 						element={
-							<PageLayout content={<MiniKursus />} title={"Minikursus"} />
+							<CourseLayout
+								data={pageData}
+								content={<MiniKursus />}
+								title={"Minikursus"}
+								info={
+									<PageInfo
+										priceLow={"750 kr."}
+										priceHigh={"850 kr."}
+										persons={"1 person"}
+										duration={"3 lektioner på 90 minutter"}
+										level={"Let øvet - Øvet"}
+										type={"Ski"}
+										link={"minikursus"}
+									/>
+								}
+							/>
 						}
 					/>
 					<Route
 						path='/kurser/familie'
 						element={
-							<PageLayout content={<FamilieKursus />} title={"Familiekursus"} />
+							<CourseLayout
+								data={pageData}
+								content={<FamilieKursus />}
+								title={"Familiekursus"}
+								info={
+									<PageInfo
+										priceLow={"3.750 kr."}
+										priceHigh={"4.250 kr."}
+										persons={"op til 2 voksne og 4 børn (u. 15 år)"}
+										duration={"5 lektioner på 90 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"familiekursus"}
+									/>
+								}
+							/>
 						}
 					/>
 					<Route
 						path='/kurser/teknik'
 						element={
-							<PageLayout content={<TeknikKursus />} title={"Teknikkursus"} />
+							<CourseLayout
+								data={pageData}
+								content={<TeknikKursus />}
+								title={"Teknikkursus"}
+								info={
+									<PageInfo
+										priceLow={"1.795 el. 2.495 kr."}
+										priceHigh={"1.795 el. 2.495 kr."}
+										persons={"1 person"}
+										duration={"6 el. 9 lektioner på 90 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"teknikkursus"}
+									/>
+								}
+							/>
+						}
+					/>
+					<Route
+						path='/kurser/firma'
+						element={
+							<CourseLayout
+								data={pageData}
+								content={<FirmaKursus />}
+								title={"Firmakursus"}
+								info={
+									<PageInfo
+										priceLow={"795 kr. inkl. moms"}
+										priceHigh={"795 kr. inkl. moms"}
+										persons={"6 - 12 personer"}
+										duration={"3 lektioner på 90 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"firmakursus"}
+									/>
+								}
+							/>
 						}
 					/>
 					<Route
 						path='/kurser/dds'
 						element={
-							<PageLayout
+							<CourseLayout
+								data={pageData}
 								content={<DDSKursus />}
 								title={"Den Danske Skiskole - Forberedende Kursus"}
+								info={
+									<PageInfo
+										priceLow={"1.795 el. 2.495 kr."}
+										priceHigh={"1.795 el. 2.495 kr."}
+										persons={"1 person"}
+										duration={"6 el. 9 lektioner på 90 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"ddskursus"}
+									/>
+								}
 							/>
 						}
 					/>
 					<Route
 						path='/lektioner/enkelt'
 						element={
-							<PageLayout content={<EnkeltLektion />} title={"Enkeltlektion"} />
+							<CourseLayout
+								data={pageData}
+								content={<EnkeltLektion />}
+								title={"Enkeltlektion"}
+								info={
+									<PageInfo
+										priceLow={"375 kr."}
+										priceHigh={"375 kr."}
+										persons={"1 person"}
+										duration={"60 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"enkeltlektion"}
+									/>
+								}
+							/>
+						}
+					/>
+					<Route
+						path='/lektioner/3-paa-baandet'
+						element={
+							<CourseLayout
+								data={pageData}
+								content={<TrePaaBaandLektion />}
+								title={"3 På Båndet"}
+								info={
+									<PageInfo
+										priceLow={"750 kr."}
+										priceHigh={"850 kr."}
+										persons={"3 personer"}
+										duration={"90 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"trepaabaand"}
+									/>
+								}
+							/>
 						}
 					/>
 					<Route
 						path='/lektioner/familie'
 						element={
-							<PageLayout
+							<CourseLayout
+								data={pageData}
 								content={<FamilieLektion />}
 								title={"Familielektion"}
+								info={
+									<PageInfo
+										priceLow={"750 kr."}
+										priceHigh={"850 kr."}
+										persons={"op til 2 voksne og 4 børn (u. 15 år)"}
+										duration={"90 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"familielektion"}
+									/>
+								}
 							/>
 						}
 					/>
 					<Route
 						path='/lektioner/gruppe'
 						element={
-							<PageLayout content={<GruppeLektion />} title={"Gruppelektion"} />
+							<CourseLayout
+								data={pageData}
+								content={<GruppeLektion />}
+								title={"Gruppelektion"}
+								info={
+									<PageInfo
+										priceLow={"Fra 1.500 kr."}
+										priceHigh={"Fra 1.500 kr."}
+										persons={"6 - 24 personer"}
+										duration={"90 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"gruppelektion"}
+									/>
+								}
+							/>
 						}
 					/>
 					<Route
 						path='/lektioner/personlig'
 						element={
-							<PageLayout
+							<CourseLayout
+								data={pageData}
 								content={<PersonligLektion />}
 								title={"Personlig Lektion"}
+								info={
+									<PageInfo
+										priceLow={"750 kr."}
+										priceHigh={"850 kr."}
+										persons={"1 person"}
+										duration={"60 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"personliglektion"}
+									/>
+								}
 							/>
 						}
 					/>
 					<Route
 						path='/lektioner/proeve'
 						element={
-							<PageLayout content={<ProeveLektion />} title={"Prøvelektion"} />
+							<CourseLayout
+								data={pageData}
+								content={<ProeveLektion />}
+								title={"Prøvelektion - 2 pers."}
+								info={
+									<PageInfo
+										priceLow={"750 kr."}
+										priceHigh={"850 kr."}
+										persons={"2 personer"}
+										duration={"90 minutter"}
+										level={"Nybegynder"}
+										type={"Ski"}
+										link={"proevelektion"}
+									/>
+								}
+							/>
 						}
 					/>
 					<Route
 						path='/lektioner/snowboard'
 						element={
-							<PageLayout
+							<CourseLayout
+								data={pageData}
 								content={<SnowboardLektion />}
 								title={"Snowboardlektion"}
+								info={
+									<PageInfo
+										priceLow={"350 kr."}
+										priceHigh={"350 kr."}
+										persons={"1 person"}
+										duration={"60 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Snowboard"}
+										link={"snowboardlektion"}
+									/>
+								}
 							/>
 						}
 					/>
 					<Route
 						path='/lektioner/snowboard-familie'
 						element={
-							<PageLayout
+							<CourseLayout
+								data={pageData}
 								content={<SnowboardFamilieLektion />}
 								title={"Snowboard - Familielektion"}
+								info={
+									<PageInfo
+										priceLow={"750 kr."}
+										priceHigh={"850 kr."}
+										persons={"op til 4 person"}
+										duration={"60 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Snowboard"}
+										link={"snowboardfamilielektion"}
+									/>
+								}
 							/>
 						}
 					/>
 					<Route
 						path='/arrangementer/blaa-mandag'
 						element={
-							<PageLayout content={<BlaaMandag />} title={"Blå Mandag"} />
+							<CourseLayout
+								data={pageData}
+								content={<BlaaMandag />}
+								title={"Blå Mandag"}
+								info={
+									<PageInfo
+										priceLow={"200 kr."}
+										priceHigh={"200 kr."}
+										persons={"1 person (Min. 6)"}
+										duration={"60 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"blaamandag"}
+									/>
+								}
+							/>
 						}
 					/>
 					<Route
 						path='/arrangementer/firma'
 						element={
-							<PageLayout
+							<CourseLayout
+								data={pageData}
 								content={<FirmaArrangement />}
 								title={"Firma Arrangement"}
+								info={
+									<PageInfo
+										priceLow={"1500-4000 kr."}
+										priceHigh={"1500-4000 kr."}
+										persons={"6-24 personer"}
+										duration={"60-120 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"firmaarrangement"}
+									/>
+								}
 							/>
 						}
 					/>
 					<Route
 						path='/arrangementer/polterabend'
 						element={
-							<PageLayout content={<Polterabend />} title={"Polterabend"} />
+							<CourseLayout
+								data={pageData}
+								content={<Polterabend />}
+								title={"Polterabend"}
+								info={
+									<PageInfo
+										priceLow={"650 kr."}
+										priceHigh={"650 kr."}
+										persons={"1 person"}
+										duration={"30 minutter"}
+										level={"Nybegynder - Øvet"}
+										type={"Ski"}
+										link={"polterabend"}
+									/>
+								}
+							/>
 						}
 					/>
 

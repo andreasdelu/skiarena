@@ -6,17 +6,6 @@ import image from "../../assets/images/BasisKursus.jpeg";
 export default function TeknikKursus() {
 	return (
 		<>
-			<div
-				style={{ backgroundImage: `url(${image})` }}
-				className='pageInfoImage'></div>
-			<PageInfo
-				price={"1.795 el. 2.495 kr. pr. person"}
-				duration={"6 el. 9 lektioner på 90 minutter"}
-				level={"Nybegynder - Øvet"}
-				type={"Ski"}
-				link={"teknikkursus"}
-			/>
-			<h3>Information</h3>
 			<p>
 				Dette er ski teknik kurset for dig, der enten virkelig ønsker at
 				forbedre dit skiløb eller blot lære det helt fra bunden! <br /> <br />{" "}

@@ -60,9 +60,15 @@ export default function Footer() {
 					</div>
 				</div>
 				<div className='footerBottom'>
-					© 2022 SkiArena · <a href='https://racehall.com/'>Racehall</a> ·{" "}
-					<a href='https://dinerslounge.dk/'>Diner’s Lounge</a> ·{" "}
-					<Link to={"/cookies"}>Cookie- og privatlivspolitik</Link>
+					© 2022 SkiArena ·{" "}
+					<a href='https://racehall.com/' target='_blank' rel='noreferrer'>
+						Racehall
+					</a>{" "}
+					·{" "}
+					<a href='https://dinerslounge.dk/' target='_blank' rel='noreferrer'>
+						Diner’s Lounge
+					</a>{" "}
+					· <Link to={"/cookies"}>Cookie- og privatlivspolitik</Link>
 				</div>
 			</footer>
 		</>

@@ -1,10 +1,98 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import GiftcardItem from "../components/GiftcardItem";
+
+import giftcardData from "../Gavekort.json";
+
+import cart from "../assets/images/cart.svg";
 
 export default function Gavekort() {
+	document.title = "SkiArena - Køb Gavekort";
+
+	const cartRef = useRef(null);
+
+	const [shoppingCart, setShoppingCart] = useState([]);
+
+	useEffect(() => {
+		cartRef.current.scrollTo(0, cartRef.current.scrollHeight);
+	}, [shoppingCart]);
+
+	function ShoppingCartItem(data) {
+		return (
+			<>
+				<div
+					data-itemid={data.id}
+					data-itemseason={data.season}
+					className='shoppingCartItem'>
+					<p className='shoppingCartItemName'>{data.name}</p>
+					<div className='shoppingCartItemBottom'>
+						<p className='shoppingCartItemAmount'>
+							Antal: <b>{data.amount}</b>
+						</p>
+						<p className='shoppingCartItemTotal'>
+							Total pris: <b>{data.total} kr.</b>
+						</p>
+					</div>
+				</div>
+			</>
+		);
+	}
+
+	function addToCart(item, amount, total, season) {
+		for (const cartItem of shoppingCart) {
+			if (
+				cartItem.id === item.id &&
+				total / amount === cartItem.total / cartItem.amount
+			) {
+				cartItem.amount += amount;
+				cartItem.total += total;
+				setShoppingCart((shoppingCart) => [...shoppingCart]);
+				return;
+			}
+		}
+
+		let name = item.name.split("-")[0];
+		name = name.split("<")[0];
+		const cartObject = {
+			id: item.id,
+			name: name,
+			season: season,
+			amount: amount,
+			total: total,
+		};
+		setShoppingCart((shoppingCart) => [...shoppingCart, cartObject]);
+	}
+
 	return (
 		<>
-			<div className='pageWrap'>
-				<h1 className='pageTitle'>Køb Gavekort</h1>
+			<div id='giftcardWrap' className='pageWrap'>
+				<div className='giftCards'>
+					<h1 className='pageTitle'>Køb Gavekort</h1>
+					{giftcardData.map((card, i) => (
+						<GiftcardItem key={i} {...card} sendData={addToCart} />
+					))}
+				</div>
+				<div id='giftCart'>
+					<div className='cartContent'>
+						<h2>
+							<img src={cart} alt='' /> Indkøbskurv
+						</h2>
+						<hr />
+						<div ref={cartRef} className='shoppingCart'>
+							{shoppingCart.length ? (
+								<>
+									{shoppingCart.map((item, i) => (
+										<ShoppingCartItem key={i} {...item} />
+									))}
+								</>
+							) : (
+								<p style={{ textAlign: "center" }}>Din indkøbskurv er tom</p>
+							)}
+						</div>
+						<div id='checkoutBtn' className='ctaButton'>
+							Check ud
+						</div>
+					</div>
+				</div>
 			</div>
 		</>
 	);

@@ -6,17 +6,6 @@ import image from "../../assets/images/BasisKursus.jpeg";
 export default function IntroKursus() {
 	return (
 		<>
-			<div
-				style={{ backgroundImage: `url(${image})` }}
-				className='pageInfoImage'></div>
-			<PageInfo
-				price={"550 kr. pr. person"}
-				duration={"2 lektioner på 90 minutter"}
-				level={"Nybegynder"}
-				type={"Ski"}
-				link={"introkursus"}
-			/>
-			<h3>Information</h3>
 			<p>
 				Hos SkiArena er alle velkomne - derfor tilbyder vi intro kursus til alle
 				vores førstegangs-besøgende kunder. Intro-kurset indeholder 2

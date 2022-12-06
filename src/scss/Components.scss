@@ -176,21 +176,45 @@
 	}
 }
 
-#card {
-		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-		transition: 0.3s;
-		width: 40%;
-		max-width: 400px;
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	max-width: 400px;
+	min-width: 100px;
+	position: relative;
+	z-index: 1;
+	border-radius: 5px;
+	overflow: hidden;
+	margin-bottom: 20px;
+	cursor: pointer;
 
-	  .card--image {
-		width: 100%; 
-	  }
+	&:hover {
+		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+	}
 
-	  .card--stats {
+	.card--image {
+		width: 100%;
+		height: 70%;
+		object-fit: cover;
+		vertical-align: bottom;
+		min-height: 400px;
+		position: relative;
+		isolation: isolate;
+		z-index: 0;
+	}
+
+	.card--stats {
 		padding: 2px 16px;
-	  }
-
-
+		box-sizing: border-box;
+		background-color: white;
+		height: 100px;
+		width: 100%;
+		border-radius: 20px 20px 0 0;
+		position: absolute;
+		isolation: isolate;
+		z-index: 1;
+		bottom: 0;
+	}
 }
 
 #footer {
@@ -631,6 +655,201 @@
 					color: white !important;
 				}
 			}
+		}
+	}
+}
+
+.valuePicker {
+	display: grid;
+	grid-template-columns: 25% 50% 25%;
+	width: 100px;
+	border: 1px solid rgba(200, 200, 200, 0.2);
+	border-radius: 9999px;
+	overflow: hidden;
+	.valuePickerButton {
+		display: grid;
+		place-items: center;
+		background-color: rgba(200, 200, 200, 0.2);
+		font-weight: 400;
+		cursor: pointer;
+		user-select: none;
+
+		&:hover {
+			background-color: rgba(200, 200, 200, 0.3);
+		}
+	}
+
+	.valuePickerNumber {
+		border: none;
+		display: grid;
+		place-items: center;
+		text-align: center;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+.giftcardItem {
+	margin-top: 25px;
+	display: flex;
+	width: 100%;
+	min-height: 120px;
+	justify-content: space-between;
+	gap: 25px;
+	box-sizing: border-box;
+
+	/* background-color: rgb(250, 250, 250); */
+	padding: 15px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.1);
+
+	.giftcardItemLeft {
+		max-width: 250px;
+
+		.giftName {
+			font-weight: 600;
+		}
+	}
+	.giftcardItemMid {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		margin-left: auto;
+		margin-right: 20px;
+
+		.priceOnly {
+			margin-right: 40px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		label {
+			font-size: 13px;
+		}
+		.customGiftValue {
+			display: grid;
+			grid-template-columns: 75% 25%;
+			width: 120px;
+			border: 2px solid rgba(200, 200, 200, 0.3);
+			border-radius: 5px;
+
+			input {
+				border: none;
+				display: grid;
+				place-items: center;
+				text-align: center;
+				font-size: 14px;
+
+				&:focus {
+					outline: none;
+				}
+			}
+
+			p {
+				margin: 0;
+				font-weight: 400;
+				background-color: rgba(200, 200, 200, 0.3);
+				text-align: center;
+				padding: 3px;
+				font-size: 14px;
+			}
+		}
+	}
+	.giftcardItemRight {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		p {
+			text-align: left;
+		}
+		width: 200px;
+	}
+}
+
+@media (max-width: 750px) {
+	.giftcardItem {
+		margin: 0 auto;
+		margin-top: 25px;
+		display: flex;
+		width: 300px;
+		min-height: 120px;
+		justify-content: space-between;
+		align-items: center;
+		gap: 30px;
+		box-sizing: border-box;
+		flex-direction: column;
+
+		/* background-color: rgb(250, 250, 250); */
+		padding: 20px 10px;
+		border-radius: 10px;
+		box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.1);
+
+		.giftcardItemLeft {
+			max-width: 250px;
+
+			.giftName {
+				font-weight: 600;
+				text-align: center;
+				margin-bottom: 30px;
+				margin-top: 0;
+			}
+			.valuePicker {
+				margin: 0 auto;
+			}
+		}
+		.giftcardItemMid {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			margin-left: 0;
+			margin-right: 0;
+
+			label {
+				font-size: 13px;
+			}
+			.customGiftValue {
+				display: grid;
+				grid-template-columns: 75% 25%;
+				width: 120px;
+				border: 2px solid rgba(200, 200, 200, 0.3);
+				border-radius: 5px;
+
+				input {
+					border: none;
+					display: grid;
+					place-items: center;
+					text-align: center;
+					font-size: 14px;
+
+					&:focus {
+						outline: none;
+					}
+				}
+
+				p {
+					margin: 0;
+					font-weight: 400;
+					background-color: rgba(200, 200, 200, 0.3);
+					text-align: center;
+					padding: 3px;
+					font-size: 14px;
+				}
+			}
+		}
+		.giftcardItemRight {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			p {
+				text-align: center;
+				margin: 0;
+			}
+			width: 200px;
 		}
 	}
 }

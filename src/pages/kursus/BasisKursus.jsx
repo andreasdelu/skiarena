@@ -1,23 +1,9 @@
 import React from "react";
 import PageInfo from "../../components/PageInfo";
 
-import image from "../../assets/images/BasisKursus.jpeg";
-
 export default function BasisKursus() {
 	return (
 		<>
-			{/* <img className='pageInfoImage' src={image} alt='' /> */}
-			<div
-				style={{ backgroundImage: `url(${image})` }}
-				className='pageInfoImage'></div>
-			<PageInfo
-				price={"750 kr. pr. person (Højsæson: 850 kr)"}
-				duration={"3 lektioner på 90 minutter"}
-				level={"Nybegynder - Øvet"}
-				type={"Ski"}
-				link={"basiskursus"}
-			/>
-			<h3>Information</h3>
 			<p>
 				Basis ski kursus er for dig / jer, der ikke har stået på ski eller bånd
 				før eller for jer der har erfaring og skal have en masse skiløb i benene

@@ -1,5 +1,20 @@
 import React from "react";
 
+import PageInfo from "../../components/PageInfo";
+
+import image from "../../assets/images/BasisKursus.jpeg";
+
 export default function ProeveLektion() {
-	return <div>ProeveLektion</div>;
+	return (
+		<>
+			<b>
+				<i>Bemærk - Sælges kun til førstegangsbesøgende!</i>
+			</b>
+			<p>
+				Det er altid sjovere at være to…. også på ski. Derfor har vi et godt
+				tilbud til jer, der gerne lige vil prøve det for første gang: En
+				prøvelektion for to voksne.
+			</p>
+		</>
+	);
 }

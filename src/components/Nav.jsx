@@ -80,7 +80,9 @@ export default function Nav() {
 						className='menuItem'
 						onMouseEnter={() => handleMenuHover(setDrop1)}
 						onMouseLeave={() => handleMenuHoverStop(setDrop1)}>
-						<p className='menuLink'>Kurser</p>
+						<Link to={"/kurser"} className='menuLink'>
+							Kurser
+						</Link>
 						<img src={Arrow} alt='Dropdown' />
 						{drop1 && (
 							<div onClick={closeDropdown} className='dropdownMenu'>
@@ -89,6 +91,7 @@ export default function Nav() {
 								<NavLink to={"/kurser/mini"}>Minikursus</NavLink>
 								<NavLink to={"/kurser/familie"}>Familiekursus</NavLink>
 								<NavLink to={"/kurser/teknik"}>Teknikkursus</NavLink>
+								<NavLink to={"/kurser/firma"}>Firmakursus</NavLink>
 								<NavLink to={"/kurser/dds"}>DDS- Forberedende Kursus</NavLink>
 							</div>
 						)}
@@ -97,16 +100,19 @@ export default function Nav() {
 						className='menuItem'
 						onMouseEnter={() => handleMenuHover(setDrop2)}
 						onMouseLeave={() => handleMenuHoverStop(setDrop2)}>
-						<p className='menuLink'>Lektioner</p>
+						<Link to={"/lektioner"} className='menuLink'>
+							Lektioner
+						</Link>
 						<img src={Arrow} alt='Dropdown' />
 						{drop2 && (
 							<div onClick={closeDropdown} className='dropdownMenu'>
 								<NavLink to={"/lektioner/enkelt"}>Enkeltlektion</NavLink>
 								<NavLink to={"/lektioner/personlig"}>Personlig Lektion</NavLink>
-								<NavLink to={"/lektioner/familie"}>Familielektion</NavLink>
 								<NavLink to={"/lektioner/proeve"}>
 									Prøvelektion - 2 pers.
 								</NavLink>
+								<NavLink to={"/lektioner/3-paa-baandet"}>3 På Båndet</NavLink>
+								<NavLink to={"/lektioner/familie"}>Familielektion</NavLink>
 								<NavLink to={"/lektioner/gruppe"}>Gruppelektion</NavLink>
 								<NavLink to={"/lektioner/snowboard"}>Snowboardlektion</NavLink>
 								<NavLink to={"/lektioner/snowboard-familie"}>
@@ -119,7 +125,9 @@ export default function Nav() {
 						className='menuItem'
 						onMouseEnter={() => handleMenuHover(setDrop3)}
 						onMouseLeave={() => handleMenuHoverStop(setDrop3)}>
-						<p className='menuLink'>Arrangementer</p>
+						<Link to={"/arrangementer"} className='menuLink'>
+							Arrangementer
+						</Link>
 						<img src={Arrow} alt='Dropdown' />
 						{drop3 && (
 							<div onClick={closeDropdown} className='dropdownMenu'>

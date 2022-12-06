@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Prices() {
+	document.title = "SkiArena - Priser";
 	return (
 		<>
 			<div id='pricesWrap'>
 				<h1 className='pageTitle'>Prisoversigt</h1>
 				<div className='pricesContent'>
-					<table>
+					<table id='lektioner'>
 						<thead>
 							<tr>
 								<th>Skilektioner</th>
@@ -54,7 +55,7 @@ export default function Prices() {
 							</tr>
 						</tbody>
 					</table>
-					<table>
+					<table id='kurser'>
 						<thead>
 							<tr>
 								<th>Skikurser</th>
@@ -117,7 +118,7 @@ export default function Prices() {
 							</tr>
 						</tbody>
 					</table>
-					<table>
+					<table id='snowboard'>
 						<thead>
 							<tr>
 								<th>Snowboard</th>
@@ -149,7 +150,7 @@ export default function Prices() {
 							</tr>
 						</tbody>
 					</table>
-					<table>
+					<table id='arrangementer'>
 						<thead>
 							<tr>
 								<th>Arrangementer</th>
@@ -160,23 +161,24 @@ export default function Prices() {
 						<tbody>
 							<tr>
 								<td>
-									Arrangement - 1 bånd i 1 time, 1 instruktør <br /> (1-8 pers.)
+									<Link to={"/lektioner/gruppe"}>Gruppe</Link> - 1 bånd i 1
+									time, 1 instruktør <br /> (1-6 pers.)
 								</td>
 								<td>1.500 Kr.</td>
 								<td>1.500 Kr.</td>
 							</tr>
 							<tr>
 								<td>
-									Arrangement - 1 bånd i 2 timer, 1 instruktør <br /> (7-15
-									pers.)
+									<Link to={"/lektioner/gruppe"}>Gruppe</Link> - 1 bånd i 2
+									timer, 1 instruktør <br /> (7-12 pers.)
 								</td>
 								<td>2.500 Kr.</td>
 								<td>2.500 Kr.</td>
 							</tr>
 							<tr>
 								<td>
-									Arrangement - 2 bånd i 2 timer, 2 instruktører <br /> (12-24
-									pers.)
+									<Link to={"/lektioner/gruppe"}>Gruppe</Link> - 2 bånd i 2
+									timer, 2 instruktører <br /> (13-24 pers.)
 								</td>
 								<td>4.000 Kr.</td>
 								<td>4.000 Kr.</td>
@@ -186,8 +188,8 @@ export default function Prices() {
 									<Link to={"/arrangementer/polterabend"}>Polterabend</Link> - 1
 									time
 								</td>
-								<td>750 Kr.</td>
-								<td>800 Kr.</td>
+								<td>650 Kr.</td>
+								<td>650 Kr.</td>
 							</tr>
 							<tr>
 								<td>

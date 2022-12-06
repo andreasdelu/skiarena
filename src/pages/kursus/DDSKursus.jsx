@@ -5,20 +5,6 @@ import image from "../../assets/images/dds.png";
 export default function DDSKursus() {
 	return (
 		<>
-			<div
-				style={{
-					backgroundImage: `url(${image})`,
-					backgroundPosition: "center",
-				}}
-				className='pageInfoImage'></div>
-			<PageInfo
-				price={"1.795 el. 2.495 kr. pr. person"}
-				duration={"6 el. 9 lektioner på 90 minutter"}
-				level={"Nybegynder - Øvet"}
-				type={"Ski"}
-				link={"introkursus"}
-			/>
-			<h3>Information</h3>
 			<p>
 				For dig der skal til ski-instruktør eksamen eller på Teknikhold på
 				Hintertux med Den Danske Skiskole uge 41 eller uge 42 (efterår) eller

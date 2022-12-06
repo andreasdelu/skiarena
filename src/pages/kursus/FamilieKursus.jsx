@@ -5,19 +5,6 @@ import image from "../../assets/images/BasisKursus.jpeg";
 export default function FamilieKursus() {
 	return (
 		<>
-			<div
-				style={{ backgroundImage: `url(${image})` }}
-				className='pageInfoImage'></div>
-			<PageInfo
-				price={
-					"3.750 kr. - op til 2 voksne og 4 børn (u. 15 år) (Højsæson: 4.250 kr)"
-				}
-				duration={"5 lektioner på 90 minutter"}
-				level={"Nybegynder - Øvet"}
-				type={"Ski"}
-				link={"introkursus"}
-			/>
-			<h3>Information</h3>
 			<p>
 				Skiskole og teknik for HELE FAMILIEN. Vores meget fleksible familie
 				program: “Gå-til-ski”. <br /> <br /> Om nogen af jer skal lære at stå på
