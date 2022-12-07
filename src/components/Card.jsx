@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import kursusData from "../Kurser.json";
 
 export default function Card(props) {
 	const navigate = useNavigate();
