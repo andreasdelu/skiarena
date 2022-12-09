@@ -944,13 +944,41 @@
 }
 
 .loadingWrapper {
-	height: 100%;
-	width: 100%;
+	height: 40vh;
+	width: 100%; 
+	display: grid; 
+	place-items: center;
 
 	.loadingLogo {
 		width: 100px; 
 		height: auto; 
 	}
+
+	.logoText {
+		display: grid; 
+		place-items: center;
+	}
+
+	.loader {
+		border: 7px solid #f3f3f3;
+		border-radius: 100%;
+		border-top: 7px solid Main.$blue;
+		width: 3vw;
+		height: 3vw;
+		-webkit-animation: spin 2s linear infinite; /* Safari */
+		animation: spin 2s linear infinite;
+	  }
+	  
+	  /* Safari */
+	  @-webkit-keyframes spin {
+		0% { -webkit-transform: rotate(0deg); }
+		100% { -webkit-transform: rotate(360deg); }
+	  }
+	  
+	  @keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	  }
 
 
 }
