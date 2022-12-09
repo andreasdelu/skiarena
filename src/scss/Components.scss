@@ -943,7 +943,14 @@
 	}
 }
 
-.loading {
+.loadingWrapper {
 	height: 100%;
 	width: 100%;
+
+	.loadingLogo {
+		width: 100px; 
+		height: auto; 
+	}
+
+
 }
