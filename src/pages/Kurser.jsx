@@ -8,9 +8,9 @@ export default function Kurser({ data }) {
 	return (
 		<div className='pageWrap coursesWrap'>
 			<h1 className='pageTitle'>Alle Kurser</h1>
-				{!data.length ? (
-					<>
-			<div className='cards-list'>
+			{data.length ? (
+				<>
+					<div className='cards-list'>
 						{kursusData.map((item) => (
 							<Card
 								id={item.id}
@@ -21,11 +21,11 @@ export default function Kurser({ data }) {
 								wpData={data}
 							/>
 						))}
-			</div>
-					</>
-				) : (
-					<Loading />
-				)}
+					</div>
+				</>
+			) : (
+				<Loading />
+			)}
 		</div>
 	);
 }

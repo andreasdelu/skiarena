@@ -864,98 +864,98 @@
 }
 
 /* Booking item styling */
-
 .bookingItem {
-	margin-top: 25px;
-	display: flex;
-	width: 100%;
-	min-height: 120px;
-	justify-content: space-between;
-	gap: 25px;
-	box-sizing: border-box;
-
-	/* background-color: rgb(250, 250, 250); */
-	padding: 15px;
+	transition: height 0.3s;
 	border-radius: 10px;
 	box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.1);
-
-	.bookingItemLeft {
-		width: 200px;
+	.bookingStart {
+		margin-top: 25px;
 		display: flex;
-		justify-content: center;
-		flex-direction: column;
+		width: 100%;
+		min-height: 120px;
+		justify-content: space-between;
+		gap: 25px;
+		box-sizing: border-box;
+		padding: 15px;
 
-		.bookingName {
-			font-weight: 600;
-			margin: 0;
-			font-size: 1.1rem;
+		.bookingItemLeft {
+			width: 200px;
 			display: flex;
-			align-items: center;
-			gap: 0.5rem;
+			justify-content: center;
+			flex-direction: column;
 
-			a {
+			.bookingName {
+				font-weight: 600;
+				margin: 0;
+				font-size: 1.1rem;
 				display: flex;
 				align-items: center;
-			}
+				gap: 0.5rem;
 
-			img {
-				height: 1rem;
-				opacity: 0.5;
-				transition: opacity 0.2s;
+				a {
+					display: flex;
+					align-items: center;
+				}
 
-				&:hover {
-					opacity: 1;
+				img {
+					height: 1rem;
+					opacity: 0.5;
+					transition: opacity 0.2s;
+
+					&:hover {
+						opacity: 1;
+					}
 				}
 			}
-		}
 
-		.valuePicker {
-			margin-top: 10px;
+			.valuePicker {
+				margin-top: 10px;
+			}
 		}
-	}
-	.bookingItemMid {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		margin-left: auto;
-		margin-right: auto;
-
-		label {
-			font-size: 13px;
-		}
-
-		.bookingItemPrice {
-			margin: 0;
-		}
-	}
-	.bookingItemRight {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		p {
-			text-align: left;
-		}
-		.ctaButton {
+		.bookingItemMid {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
 			margin-left: auto;
+			margin-right: auto;
+
+			label {
+				font-size: 13px;
+			}
+
+			.bookingItemPrice {
+				margin: 0;
+			}
 		}
-		width: 200px;
+		.bookingItemRight {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			p {
+				text-align: left;
+			}
+			.ctaButton {
+				margin-left: auto;
+			}
+			width: 200px;
+		}
 	}
 }
 
 .loadingWrapper {
 	height: 40vh;
-	width: 100%; 
-	display: grid; 
+	width: 100%;
+	display: grid;
 	place-items: center;
 
 	.loadingLogo {
-		width: 100px; 
-		height: auto; 
+		width: 100px;
+		height: auto;
 	}
 
 	.logoText {
-		display: grid; 
+		display: grid;
 		place-items: center;
 	}
 
@@ -967,18 +967,24 @@
 		height: 3vw;
 		-webkit-animation: spin 2s linear infinite; /* Safari */
 		animation: spin 2s linear infinite;
-	  }
-	  
-	  /* Safari */
-	  @-webkit-keyframes spin {
-		0% { -webkit-transform: rotate(0deg); }
-		100% { -webkit-transform: rotate(360deg); }
-	  }
-	  
-	  @keyframes spin {
-		0% { transform: rotate(0deg); }
-		100% { transform: rotate(360deg); }
-	  }
+	}
 
+	/* Safari */
+	@-webkit-keyframes spin {
+		0% {
+			-webkit-transform: rotate(0deg);
+		}
+		100% {
+			-webkit-transform: rotate(360deg);
+		}
+	}
 
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
 }

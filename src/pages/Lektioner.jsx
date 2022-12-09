@@ -1,15 +1,16 @@
 import React from "react";
 import Card from "../components/Card";
 import lektionsData from "../lektioner.json";
+import Loading from "../components/Loading";
 
 export default function Lektioner({ data }) {
 	document.title = "SkiArena - Alle lektioner";
 	return (
 		<div className='pageWrap coursesWrap'>
 			<h1 className='pageTitle'>Alle lektioner</h1>
-			<div className='cards-list'>
-				{data.length ? (
-					<>
+			{data.length ? (
+				<>
+					<div className='cards-list'>
 						{lektionsData.map((item) => (
 							<Card
 								id={item.id}
@@ -20,11 +21,11 @@ export default function Lektioner({ data }) {
 								wpData={data}
 							/>
 						))}
-					</>
-				) : (
-					<p>Loading</p>
-				)}
-			</div>
+					</div>
+				</>
+			) : (
+				<Loading />
+			)}
 		</div>
 	);
 }

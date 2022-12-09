@@ -11,6 +11,12 @@ import ski from "../assets/images/ski-placeholder.jpeg";
 import ski2 from "../assets/images/ski-placeholder-2.jpeg";
 import ImageClickable from "../components/ImageClickable";
 
+/* Import til iconer */
+import kursus from "../assets/images/icons/kursus-icon.svg";
+import arrangementer from "../assets/images/icons/arrangementer-icon.svg";
+import lektion from "../assets/images/icons/lektion-icon.svg";
+import priser from "../assets/images/icons/priser-icon.svg";
+
 export default function Home() {
 	document.title = "SkiArena";
 	function handleContactSubmit(e) {
@@ -55,7 +61,42 @@ export default function Home() {
 					<h2 className='sectionTitle'>
 						Kurser og lektioner for familier, enkelte og firmaer
 					</h2>
-					<section className='cards-list'></section>
+					{/* Styling af ikoner */}
+					<div className='iconOverview'>
+						<div className='iconText'>
+							<img className='icon' src={kursus} alt='kursus ikon' />
+							<p className='titelIcons'>Kursus</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
+								dolor sit amet, consectetur adipiscing elit.
+							</p>
+						</div>
+						<div className='iconText'>
+							<img src={lektion} alt='kursus ikon' />
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
+								dolor sit amet, consectetur adipiscing elit.
+							</p>
+						</div>
+						<div className='iconText'>
+							<img src={arrangementer} alt='kursus ikon' />
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
+								dolor sit amet, consectetur adipiscing elit.
+							</p>
+						</div>
+						<div className='iconText'>
+							<img src={priser} alt='kursus ikon' />
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
+								dolor sit amet, consectetur adipiscing elit.
+							</p>
+						</div>
+					</div>
 				</div>
 				<div
 					className='homeSection bgSection'

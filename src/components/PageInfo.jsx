@@ -39,7 +39,7 @@ export default function PageInfo({
 				</small>
 			</div>
 			<div className='pageInfoRight'>
-				<Link className='ctaButton' to={`/booking/${link}`}>
+				<Link className='ctaButton' to={`/booking`}>
 					Book nu
 				</Link>
 			</div>

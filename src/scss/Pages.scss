@@ -10,6 +10,7 @@
 		top: 0px;
 		left: 0;
 		z-index: 0;
+
 		#heroVideo {
 			height: 100%;
 			object-fit: cover;
@@ -55,6 +56,31 @@
 					}
 				}
 			}
+		}
+	}
+
+	.iconOverview {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		place-items: center;
+		position: relative;
+		z-index: 1;
+		background-color: rgb(237, 79, 79);
+		margin: auto 5vw;
+
+		.iconText {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			border: 1px solid rgba(0, 0, 0, 0.8);
+			margin: 10px 10px;
+			min-height: 322px;
+		}
+
+		.titelIcons {
+			font-size: 2rem;
+			font-weight: 600;
 		}
 	}
 
@@ -286,6 +312,48 @@
 
 #bookingWrap {
 	margin-top: 120px;
+	max-width: 1000px;
+
+	h2 {
+		text-align: center;
+	}
+
+	#bookingFilter {
+		display: flex;
+		width: fit-content;
+		position: relative;
+
+		background-color: rgb(250, 250, 250);
+		border-radius: 999px;
+		overflow: hidden;
+		margin: 50px auto;
+
+		.filter {
+			font-weight: 400;
+			isolation: isolate;
+			z-index: 2;
+			cursor: pointer;
+			padding: 0 20px;
+			color: black;
+			user-select: none;
+
+			&.isSelected {
+				color: white;
+			}
+		}
+
+		.filterSelected {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			background-color: Main.$blue;
+			top: 50%;
+			left: 0;
+			border-radius: 999px;
+			transition: all 0.3s ease;
+			transform: translateY(-50%);
+		}
+	}
 }
 
 .courseWrap {
