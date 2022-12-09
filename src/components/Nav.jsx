@@ -86,13 +86,12 @@ export default function Nav() {
 						<img src={Arrow} alt='Dropdown' />
 						{drop1 && (
 							<div onClick={closeDropdown} className='dropdownMenu'>
-								<NavLink to={"/kurser/intro"}>Introkursus</NavLink>
 								<NavLink to={"/kurser/basis"}>Basiskursus</NavLink>
 								<NavLink to={"/kurser/mini"}>Minikursus</NavLink>
 								<NavLink to={"/kurser/familie"}>Familiekursus</NavLink>
 								<NavLink to={"/kurser/teknik"}>Teknikkursus</NavLink>
 								<NavLink to={"/kurser/firma"}>Firmakursus</NavLink>
-								<NavLink to={"/kurser/dds"}>DDS- Forberedende Kursus</NavLink>
+								<NavLink to={"/kurser/dds"}>DDS - Forberedende Kursus</NavLink>
 							</div>
 						)}
 					</div>

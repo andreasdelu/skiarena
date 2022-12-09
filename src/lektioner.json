@@ -1,0 +1,58 @@
+[
+	{
+		"id": 0,
+		"titel": "Enkeltlektion",
+		"description": "Enkeltlektion er for dig som lige skal have en hurtig time, til at få opfrisket de gamle skivaner.",
+		"price": "375",
+		"link": "/lektioner/enkelt"
+	},
+	{
+		"id": 1,
+		"titel": "Personlig Lektion",
+		"description": "Personlig Lektion er for dig der ønsker at være 100% i centrum gennem hele lektionen.",
+		"price": "750",
+		"link": "/lektioner/personlig"
+	},
+	{
+		"id": 2,
+		"titel": "Prøvelektion - 2 pers.",
+		"description": "Tag en valgfri partner med i hånden og ha en sjov og hyggelig lektion, hvor i kan lærer sammen.",
+		"price": "750",
+		"link": "/lektioner/proeve"
+	},
+	{
+		"id": 3,
+		"titel": "3 på båndet",
+		"description": "Er i 3 personer, som gerne vil have en sjov og udfordrende oplevelse sammen, inden i skal ud på pisterne.",
+		"price": "750",
+		"link": "/lektioner/3-paa-baandet"
+	},
+	{
+		"id": 4,
+		"titel": "Familielektion",
+		"description": "SkiArenas familie lektion er for dig der ønsker at give hele familien en oplevelse på ski. Det er både sjovt og lærerigt.",
+		"price": "750",
+		"link": "/lektioner/familie"
+	},
+	{
+		"id": 5,
+		"titel": "Gruppelektion",
+		"description": "Med vores gruppelektion får i gruppe baseret undervisning hvor i får mulighed for at stå flere på båndet sammen.",
+		"price": "1.500",
+		"link": "/lektioner/gruppe"
+	},
+	{
+		"id": 6,
+		"titel": "Snowboardlektion",
+		"description": "Har du planer om at stå på snowboard, frem for ski og vil du gerne have en hurtig lektion inden du tager på skiferie.",
+		"price": "350",
+		"link": "/lektioner/snowboard"
+	},
+	{
+		"id": 7,
+		"titel": "Snowboard - Familielektion",
+		"description": "Denne lektion er for familier der kan lide snowboard, og som gerne vil øve teknikken hjemmefra.",
+		"price": "750",
+		"link": "/lektioner/snowboard-familie"
+	}
+]

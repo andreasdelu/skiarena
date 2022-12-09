@@ -55,35 +55,7 @@ export default function Home() {
 					<h2 className='sectionTitle'>
 						Kurser og lektioner for familier, enkelte og firmaer
 					</h2>
-					<section className='cards-list'>
-						<Card
-							link={"/kurser"}
-							coverImg={
-								"https://www.skisport.dk/img/55d5ca02988f8_skisport_dk.jpg"
-							}
-							title={"Kurser"}
-							description={"Wow kurser er ok swag"}
-							price={"Fra 550 kr."}
-						/>
-						<Card
-							link={"/lektioner"}
-							coverImg={
-								"https://funguide.dk/wp-content/uploads/2014/09/indoor-ski.jpg"
-							}
-							title={"Lektioner"}
-							description={""}
-							price={"Fra 375 kr."}
-						/>
-						<Card
-							link={"/arrangementer"}
-							coverImg={
-								"https://www.skisport.dk/img/55d5c9be6ab21_skisport_dk.jpg"
-							}
-							title={"Arrangementer"}
-							description={""}
-							price={"Fra 200 kr."}
-						/>
-					</section>
+					<section className='cards-list'></section>
 				</div>
 				<div
 					className='homeSection bgSection'

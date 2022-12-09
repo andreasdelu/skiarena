@@ -176,44 +176,53 @@
 	}
 }
 
+/* ================= CARD  ================= */
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	transition: 0.3s;
-	max-width: 400px;
-	min-width: 100px;
 	position: relative;
 	z-index: 1;
 	border-radius: 5px;
 	overflow: hidden;
-	margin-bottom: 20px;
+	margin: 25px;
 	cursor: pointer;
+	aspect-ratio: 4 / 3;
 
 	&:hover {
 		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 	}
 
+	&:hover > .card--stats {
+		height: 200px;
+	}
+
+	.card--title {
+		font-size: 1.2rem;
+		margin-top: 15px;
+	}
+
 	.card--image {
 		width: 100%;
-		height: 70%;
-		object-fit: cover;
-		vertical-align: bottom;
-		min-height: 400px;
+		height: 85%;
 		position: relative;
 		isolation: isolate;
 		z-index: 0;
+		background-size: cover;
+		background-position: center;
 	}
 
 	.card--stats {
 		padding: 2px 16px;
 		box-sizing: border-box;
 		background-color: white;
-		height: 100px;
+		height: 60px;
 		width: 100%;
 		border-radius: 20px 20px 0 0;
 		position: absolute;
 		isolation: isolate;
 		z-index: 1;
 		bottom: 0;
+		transition: 450ms ease-in-out;
 	}
 }
 
@@ -852,4 +861,89 @@
 			width: 200px;
 		}
 	}
+}
+
+/* Booking item styling */
+
+.bookingItem {
+	margin-top: 25px;
+	display: flex;
+	width: 100%;
+	min-height: 120px;
+	justify-content: space-between;
+	gap: 25px;
+	box-sizing: border-box;
+
+	/* background-color: rgb(250, 250, 250); */
+	padding: 15px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.1);
+
+	.bookingItemLeft {
+		width: 200px;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+
+		.bookingName {
+			font-weight: 600;
+			margin: 0;
+			font-size: 1.1rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+
+			a {
+				display: flex;
+				align-items: center;
+			}
+
+			img {
+				height: 1rem;
+				opacity: 0.5;
+				transition: opacity 0.2s;
+
+				&:hover {
+					opacity: 1;
+				}
+			}
+		}
+
+		.valuePicker {
+			margin-top: 10px;
+		}
+	}
+	.bookingItemMid {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		margin-left: auto;
+		margin-right: auto;
+
+		label {
+			font-size: 13px;
+		}
+
+		.bookingItemPrice {
+			margin: 0;
+		}
+	}
+	.bookingItemRight {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		p {
+			text-align: left;
+		}
+		.ctaButton {
+			margin-left: auto;
+		}
+		width: 200px;
+	}
+}
+
+.loading {
+	height: 100%;
+	width: 100%;
 }

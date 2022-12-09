@@ -1,37 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import logo from "../assets/images/skiarenalogo.svg";
 
 export default function PageLayout({ title, content, info, data }) {
 	document.title = "SkiArena - " + title;
+	const imgRef = useRef(null);
 	const [pageImg, setPageImg] = useState(logo);
 	const [extraClass, setExtraClass] = useState("logoBG");
 
 	const location = useLocation();
 
-	const URL = "https://skiarena-admin.delu.dk/wp-json/wp/v2/posts?slug=";
+	useEffect(() => {
+		window.addEventListener("scroll", handleScroll, false);
+		return () => {
+			window.removeEventListener("scroll", handleScroll, false);
+		};
+	}, [location]);
 
-	/* async function fetchWPDImage() {
-		title = title.replaceAll(" ", "-");
-		let queryUrl = URL + title.toLowerCase() + "&_embed";
-		console.log(queryUrl);
+	const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
-		const res = await fetch(queryUrl);
-		const data = await res.json();
-		if (data.length) {
-			setPageImg(data[0]._embedded["wp:featuredmedia"][0].source_url);
-			setExtraClass("");
-		} else {
-			setPageImg(logo);
-			setExtraClass("logoBG");
-		}
-	} */
+	function handleScroll() {
+		if (location.pathname === "/") return;
+		let windowScroll = (window.scrollY / 2000) * 100;
+		imgRef.current.animate(
+			[
+				{
+					backgroundPositionY: 50 + clamp(windowScroll, 0, 50) + "%",
+				},
+			],
+			{
+				duration: 1000,
+				fill: "forwards",
+			}
+		);
+	}
 
 	function changeImage() {
-		let slug = title.replaceAll(/[\s-]/g, "-").toLowerCase();
 		for (const item of data) {
-			if (item.slug === slug) {
+			if (item.title === title && item.image !== "") {
 				setExtraClass("");
 				setPageImg(item.image);
 				return;
@@ -44,7 +51,6 @@ export default function PageLayout({ title, content, info, data }) {
 	useEffect(() => {
 		setPageImg(logo);
 		setExtraClass("logoBG");
-		/* fetchWPDImage(); */
 		changeImage();
 	}, [location, data]);
 
@@ -53,7 +59,10 @@ export default function PageLayout({ title, content, info, data }) {
 			<div className='courseWrapLeft'>
 				<h1 className='pageTitle'>{title}</h1>
 				<div
-					style={{ backgroundImage: `url(${pageImg})` }}
+					ref={imgRef}
+					style={{
+						backgroundImage: `url(${pageImg})`,
+					}}
 					className={"courseInfoImage " + extraClass}></div>
 				{info}
 				<h3>Information</h3>

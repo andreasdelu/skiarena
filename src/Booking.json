@@ -1,0 +1,212 @@
+[
+	{
+		"type": "kursus",
+		"name": "Basiskursus",
+		"desc": "",
+		"price": {
+			"low": 750,
+			"high": 850
+		},
+		"link": "/kurser/basis"
+	},
+	{
+		"type": "kursus",
+		"name": "Minikursus",
+		"desc": "",
+		"price": {
+			"low": 750,
+			"high": 850
+		},
+		"link": "/kurser/mini"
+	},
+	{
+		"type": "kursus",
+		"name": "Familiekursus",
+		"desc": "",
+		"price": {
+			"low": 3750,
+			"high": 4250
+		},
+		"link": "/kurser/familie"
+	},
+	{
+		"type": "kursus",
+		"name": "Teknikkursus",
+		"desc": "6 lektioner",
+		"price": {
+			"low": 1795,
+			"high": 1795
+		},
+		"link": "/kurser/teknik"
+	},
+	{
+		"type": "kursus",
+		"name": "Teknikkursus",
+		"desc": "9 lektioner",
+		"price": {
+			"low": 2495,
+			"high": 2495
+		},
+		"link": "/kurser/teknik"
+	},
+	{
+		"type": "kursus",
+		"name": "Firmakursus",
+		"desc": "",
+		"price": {
+			"low": 795,
+			"high": 795
+		},
+		"link": "/kurser/firma"
+	},
+	{
+		"type": "kursus",
+		"name": "DDS - Kursus",
+		"desc": "6 lektioner",
+		"price": {
+			"low": 1795,
+			"high": 1795
+		},
+		"link": "/kurser/dds"
+	},
+	{
+		"type": "kursus",
+		"name": "DDS - Kursus",
+		"desc": "9 lektioner",
+		"price": {
+			"low": 2495,
+			"high": 2495
+		},
+		"link": "/kurser/dds"
+	},
+	{
+		"type": "lektion",
+		"name": "Enkeltlektion",
+		"desc": "",
+		"price": {
+			"low": 375,
+			"high": 375
+		},
+		"link": "/lektioner/enkelt"
+	},
+	{
+		"type": "lektion",
+		"name": "Personlig Lektion",
+		"desc": "",
+		"price": {
+			"low": 750,
+			"high": 850
+		},
+		"link": "/lektioner/personlig"
+	},
+	{
+		"type": "lektion",
+		"name": "Prøvelektion",
+		"desc": "2 pers.",
+		"price": {
+			"low": 750,
+			"high": 850
+		},
+		"link": "/lektioner/proeve"
+	},
+	{
+		"type": "lektion",
+		"name": "3 På Båndet",
+		"desc": "",
+		"price": {
+			"low": 750,
+			"high": 850
+		},
+		"link": "/lektioner/3-paa-baandet"
+	},
+	{
+		"type": "lektion",
+		"name": "Familielektion",
+		"desc": "",
+		"price": {
+			"low": 750,
+			"high": 850
+		},
+		"link": "/lektioner/familie"
+	},
+	{
+		"type": "lektion",
+		"name": "Gruppelektion",
+		"desc": "1-6 pers.",
+		"price": {
+			"low": 1500,
+			"high": 1500
+		},
+		"link": "/lektioner/gruppe"
+	},
+	{
+		"type": "lektion",
+		"name": "Gruppelektion",
+		"desc": "7-12 pers.",
+		"price": {
+			"low": 2500,
+			"high": 2500
+		},
+		"link": "/lektioner/gruppe"
+	},
+	{
+		"type": "lektion",
+		"name": "Gruppelektion",
+		"desc": "13-24 pers.",
+		"price": {
+			"low": 4000,
+			"high": 4000
+		},
+		"link": "/lektioner/gruppe"
+	},
+	{
+		"type": "lektion",
+		"name": "Snowboardlektion",
+		"desc": "",
+		"price": {
+			"low": 350,
+			"high": 350
+		},
+		"link": "/lektioner/snowboard"
+	},
+	{
+		"type": "lektion",
+		"name": "Snowboard",
+		"desc": "Familielektion",
+		"price": {
+			"low": 750,
+			"high": 850
+		},
+		"link": "/lektioner/snowboard-familie"
+	},
+	{
+		"type": "arrangement",
+		"name": "Firmaarrangement",
+		"desc": "",
+		"price": {
+			"low": 0,
+			"high": 0
+		},
+		"link": "/arrangementer/firma"
+	},
+	{
+		"type": "arrangement",
+		"name": "Polterabend",
+		"desc": "",
+		"price": {
+			"low": 0,
+			"high": 0
+		},
+		"link": "/arrangementer/polterabend"
+	},
+	{
+		"type": "arrangement",
+		"name": "Blå Mandag",
+		"desc": "",
+		"price": {
+			"low": 0,
+			"high": 0
+		},
+		"link": "/arrangementer/blaa-mandag"
+	}
+]

@@ -1,17 +1,36 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import kursusData from "../Kurser.json";
 
 export default function Card(props) {
 	const navigate = useNavigate();
+
+	const [coverImg, setCoverImg] = useState("");
+
+	useEffect(() => {
+		/* let slug = props.titel.replaceAll(/[\s-]/g, "-").toLowerCase(); */
+
+		for (const post of props.wpData) {
+			if (props.titel === post.title) {
+				setCoverImg(post.image);
+			}
+		}
+	}, []);
+
 	return (
 		<>
 			<div onClick={() => navigate(props.link)} className='card'>
-				<img src={props.coverImg} className='card--image' alt={props.title} />
+				<div
+					style={{ backgroundImage: `url(${coverImg})` }}
+					className='card--image'></div>
 				<div className='card--stats'>
-					<h4 className='card--title'>{props.title}</h4>
-					<p className='card--title'>{props.description}</p>
-					<p className='card--price'>{props.price}</p>
+					<h4 className='card--title'>{props.titel}</h4>
+					<hr />
+					<p className='card--description'>{props.description}</p>
+					<p className='card--price'>
+						<b>Priser fra: {props.price},-</b>
+					</p>
 				</div>
 			</div>
 		</>

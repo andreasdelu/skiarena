@@ -1,38 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "../components/Card";
-import { fetchWPData } from "../services/wpFetcher";
+import Loading from "../components/Loading";
+import kursusData from "../Kurser.json";
 
-export default function Kurser() {
-	const [kursusData, setKursusData] = useState([]);
-	const [loading, setLoading] = useState([]);
-
-	async function getData() {
-		let data = await fetchWPData(
-			"https://skiarena-admin.delu.dk/wp-json/wp/v2/posts?_embed",
-			"Kursus"
-		);
-		console.log(data);
-		setKursusData(data);
-	}
-
-	useEffect(() => {
-		getData();
-	}, []);
-
+export default function Kurser({ data }) {
+	document.title = "SkiArena - Alle Kurser";
 	return (
-		<div className='pageWrap'>
+		<div className='pageWrap coursesWrap'>
 			<h1 className='pageTitle'>Alle Kurser</h1>
 			<div className='cards-list'>
-				{kursusData.map((data, i) => (
-					<Card
-						key={i}
-						link={data.data.url}
-						coverImg={data.image}
-						title={data.title}
-						description={data.data.descriptionShort}
-						price={data.data.priceLow}
-					/>
-				))}
+				{!data.length ? (
+					<>
+						{kursusData.map((item) => (
+							<Card
+								id={item.id}
+								titel={item.titel}
+								description={item.description}
+								price={item.price}
+								link={item.link}
+								wpData={data}
+							/>
+						))}
+					</>
+				) : (
+					<Loading />
+				)}
 			</div>
 		</div>
 	);

@@ -48,24 +48,36 @@ import Arrangementer from "./pages/Arrangementer";
 import { useEffect, useState } from "react";
 import { fetchWPData } from "./services/wpFetcher";
 import PageInfo from "./components/PageInfo";
+import BookCourse from "./pages/BookCourse";
 
 export default function App() {
 	const [pageData, setPageData] = useState([]);
 
 	async function getData() {
 		const res = await fetch(
-			"https://skiarena-admin.delu.dk/wp-json/wp/v2/posts?_embed"
+			"https://skiarena-admin.delu.dk/wp-json/wp/v2/posts?per_page=100&_embed"
 		);
 		const data = await res.json();
+		console.log(data);
 
 		let dataArray = [];
 		data.forEach((post) => {
-			let dataObject = {
-				slug: post.slug,
-				image: post._embedded["wp:featuredmedia"][0].source_url,
-			};
+			let titleFixed = post.title.rendered.replaceAll("&#8211;", "-");
+			let dataObject;
+			try {
+				dataObject = {
+					title: titleFixed,
+					image: post._embedded["wp:featuredmedia"][0].source_url,
+				};
+			} catch (err) {
+				dataObject = {
+					title: titleFixed,
+					image: "",
+				};
+			}
 			dataArray.push(dataObject);
 		});
+
 		setPageData(dataArray);
 	}
 
@@ -79,39 +91,15 @@ export default function App() {
 			<div id='mainContent'>
 				<Routes>
 					<Route path='/' element={<Home />} />
-					<Route path='/kurser' element={<Kurser />} />
-					<Route path='/lektioner' element={<Lektioner />} />
+					<Route path='/kurser' element={<Kurser data={pageData} />} />
+					<Route path='/lektioner' element={<Lektioner data={pageData} />} />
 					<Route path='/arrangementer' element={<Arrangementer />} />
 					<Route path='/cookies' element={<Cookies />} />
 					<Route path='/priser' element={<Prices />} />
-					<Route path='/booking' element={<Booking />} />
 					<Route path='/gavekort' element={<Gavekort />} />
+					<Route path='/booking' element={<Booking />} />
+					<Route path='/booking/:course' element={<BookCourse />} />
 
-					{/* <Route
-						path='/kurser/:page'
-						element={<PageLayout pageData={pageData} />}
-					/> */}
-					<Route
-						path='/kurser/intro'
-						element={
-							<CourseLayout
-								data={pageData}
-								content={<IntroKursus />}
-								title={"Introkursus"}
-								info={
-									<PageInfo
-										priceLow={"550 kr."}
-										priceHigh={"550 kr."}
-										persons={"1 person"}
-										duration={"2 lektioner på 90 minutter"}
-										level={"Nybegynder"}
-										type={"Ski"}
-										link={"introkursus"}
-									/>
-								}
-							/>
-						}
-					/>
 					<Route
 						path='/kurser/basis'
 						element={
@@ -127,7 +115,12 @@ export default function App() {
 										duration='3 lektioner på 90 minutter'
 										level='Nybegynder - Øvet'
 										type='Ski'
-										link='basiskursus'
+										link={
+											"basiskursus?" +
+											new URLSearchParams({
+												title: "Basiskursus",
+											}).toString()
+										}
 									/>
 								}
 							/>
@@ -223,16 +216,21 @@ export default function App() {
 							<CourseLayout
 								data={pageData}
 								content={<DDSKursus />}
-								title={"Den Danske Skiskole - Forberedende Kursus"}
+								title={"DDS - Forberedende Kursus"}
 								info={
 									<PageInfo
-										priceLow={"1.795 el. 2.495 kr."}
-										priceHigh={"1.795 el. 2.495 kr."}
+										priceLow={"1.795 - 2.495 kr."}
+										priceHigh={"1.795 - 2.495 kr."}
 										persons={"1 person"}
-										duration={"6 el. 9 lektioner på 90 minutter"}
+										duration={"6 - 9 lektioner på 90 minutter"}
 										level={"Nybegynder - Øvet"}
 										type={"Ski"}
-										link={"ddskursus"}
+										link={
+											"ddskursus?" +
+											new URLSearchParams({
+												title: "Den Danske Skiskole - Forberedende Kursus",
+											}).toString()
+										}
 									/>
 								}
 							/>
@@ -433,7 +431,7 @@ export default function App() {
 							<CourseLayout
 								data={pageData}
 								content={<FirmaArrangement />}
-								title={"Firma Arrangement"}
+								title={"Firmaarrangement"}
 								info={
 									<PageInfo
 										priceLow={"1500-4000 kr."}

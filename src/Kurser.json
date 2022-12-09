@@ -1,0 +1,44 @@
+[
+	{
+		"id": 1,
+		"titel": "Basiskursus",
+		"description": "Basis kurset er for dig der ikke har stået på ski før eller dig som blot vil have mere erfaring.",
+		"price": "750",
+		"link": "/kurser/basis"
+	},
+	{
+		"id": 2,
+		"titel": "Minikursus",
+		"description": "Minikurset er for dig der skal have støvet sommerens rust af, og gøre dig klar til din store skiferie. ",
+		"price": "750",
+		"link": "/kurser/mini"
+	},
+	{
+		"id": 3,
+		"titel": "Familiekursus",
+		"description": "Familiekurset er for hele familien uanset niveau, og tilpasset en familie med en travl hverdag.",
+		"price": "3.750",
+		"link": "/kurser/familie"
+	},
+	{
+		"id": 4,
+		"titel": "Teknikkursus",
+		"description": "Teknikkurset er for dig som ønsker at forbedre dit skiløb eller lære teknikken helt fra bunden.",
+		"price": "1.795",
+		"link": "/kurser/teknik"
+	},
+	{
+		"id": 5,
+		"titel": "Firmakursus",
+		"description": "Med vores firmakursus er der mulighed for tilpasset undervisning til hele virksomheden uanset niveau.",
+		"price": "795",
+		"link": "/kurser/firma"
+	},
+	{
+		"id": 6,
+		"titel": "DDS - Forberedende Kursus",
+		"description": "Kurset er tilpasset dig der drømmer om at blive skiinstruktør, eller dig der ønsker at nørde mere i dit skiløb.",
+		"price": "795",
+		"link": "/kurser/firma"
+	}
+]

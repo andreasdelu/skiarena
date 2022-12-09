@@ -66,13 +66,6 @@ export default function Prices() {
 						<tbody>
 							<tr>
 								<td>
-									<Link to={"/lektioner/personlig"}>Introkursus</Link>
-								</td>
-								<td>550 Kr.</td>
-								<td>550 Kr.</td>
-							</tr>
-							<tr>
-								<td>
 									<Link to={"/lektioner/personlig"}>Basiskursus</Link>
 								</td>
 								<td>750 Kr.</td>
