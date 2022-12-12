@@ -16,6 +16,10 @@ export default function BookingCalendar() {
 		getAllDaysInMonth(currentDate.year, currentDate.month)
 	);
 
+	const [selectedDay, setSelectedDay] = useState(0);
+	const [timeSelect, setTimeSelect] = useState(false);
+	const [confirmBooking, setConfirmBooking] = useState(false);
+
 	const days = [
 		"Mandag",
 		"Tirsdag",
@@ -39,6 +43,9 @@ export default function BookingCalendar() {
 		"November",
 		"December",
 	];
+
+	const openingTime = 16;
+	const closingTime = 20;
 
 	useEffect(() => {
 		setDaysInMonth(getAllDaysInMonth(currentYear, currentMonth));
@@ -81,6 +88,18 @@ export default function BookingCalendar() {
 				classes = "calendarDate currentDate";
 			}
 		}
+		if (selectedDay.day === date && selectedDay.month === currentMonth) {
+			classes += " dateSelected";
+		}
+		if (currentMonth === 11 && date >= 24) {
+			classes += " highSeason";
+		}
+		if (currentMonth === 0) {
+			classes += " highSeason";
+		}
+		if (currentMonth === 1 && date <= 20) {
+			classes += " highSeason";
+		}
 		return (
 			<>
 				<div onClick={onClick} className={classes}>
@@ -119,12 +138,16 @@ export default function BookingCalendar() {
 	function selectDate(e, day) {
 		if (e.target.classList.contains("dateSelected")) {
 			e.target.classList.remove("dateSelected");
+			setSelectedDay(0);
+			setTimeSelect(false);
 		} else {
 			const selected = document.querySelectorAll(".dateSelected");
 			selected.forEach((item) => {
 				item.classList.remove("dateSelected");
 			});
 			e.target.classList.add("dateSelected");
+			setSelectedDay(day);
+			setTimeSelect(true);
 		}
 	}
 
@@ -166,6 +189,16 @@ export default function BookingCalendar() {
 		}
 	}
 
+	function BookTime() {
+		return (
+			<>
+				<p data-timevalue='0' className='timeToBook timeNotAvailable'>
+					16:00 - 17:00
+				</p>
+			</>
+		);
+	}
+
 	return (
 		<>
 			<div className='calendarWrap'>
@@ -193,7 +226,72 @@ export default function BookingCalendar() {
 							name={day.name}
 						/>
 					))}
+					<small className='calendarExplain'> = Højsæson</small>
 				</div>
+				{timeSelect && (
+					<div className='bookingTime'>
+						<p className='bookingTimeTitle'>Vælg tidspunkt</p>
+						<small>
+							{selectedDay.day}. {months[selectedDay.month]} -{" "}
+							{selectedDay.year}
+						</small>
+						<p data-timevalue='0' className='timeToBook timeNotAvailable'>
+							16:00 - 17:00
+						</p>
+						<p data-timevalue='1' className='timeToBook'>
+							17:00 - 18:00
+						</p>
+						<p data-timevalue='2' className='timeToBook'>
+							18:00 - 19:00
+						</p>
+						<p data-timevalue='3' className='timeToBook'>
+							19:00 - 20:00
+						</p>
+						{/* <div className='bookingTimeOverlay'>
+						<p>
+							Denne booking kræver at der er mindst 2 bookinger per tidspunkt.{" "}
+							<br /> <br />
+							Dette er for at fylde båndene så vores instruktører ikke skal
+							kaldes ud for 1 person.
+						</p>
+						<div className='ctaButton'>Jeg forstår</div>
+					</div> */}
+					</div>
+				)}
+				{confirmBooking && (
+					<div className='confirmWrap'>
+						<p className='confirmBookingTitle'>Bekræft booking</p>
+						<small>
+							{selectedDay.day}. {months[selectedDay.month]} -{" "}
+							{selectedDay.year}
+						</small>
+						<small>
+							{selectedDay.day}. {months[selectedDay.month]} -{" "}
+							{selectedDay.year}
+						</small>
+						<p data-timevalue='0' className='timeToBook timeNotAvailable'>
+							16:00 - 17:00
+						</p>
+						<p data-timevalue='1' className='timeToBook'>
+							17:00 - 18:00
+						</p>
+						<p data-timevalue='2' className='timeToBook'>
+							18:00 - 19:00
+						</p>
+						<p data-timevalue='3' className='timeToBook'>
+							19:00 - 20:00
+						</p>
+						{/* <div className='bookingTimeOverlay'>
+						<p>
+							Denne booking kræver at der er mindst 2 bookinger per tidspunkt.{" "}
+							<br /> <br />
+							Dette er for at fylde båndene så vores instruktører ikke skal
+							kaldes ud for 1 person.
+						</p>
+						<div className='ctaButton'>Jeg forstår</div>
+					</div> */}
+					</div>
+				)}
 			</div>
 		</>
 	);

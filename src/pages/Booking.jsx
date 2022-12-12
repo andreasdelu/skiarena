@@ -5,6 +5,8 @@ import bookingData from "../Booking.json";
 import { useRef } from "react";
 import { useEffect } from "react";
 
+import Loading from "../components/Loading";
+
 export default function Booking() {
 	document.title = "SkiArena - Booking";
 
@@ -94,58 +96,36 @@ export default function Booking() {
 						Arrangementer
 					</p>
 				</div>
-				{filter === 0 && (
+
+				{bookingData.length && (
 					<>
-						<h2>Kurser</h2>
-						{bookingData.map((book, i) => {
-							if (book.type === "kursus") {
-								return <BookingItem key={i} {...book} />;
-							}
-						})}
-						<h2>Lektioner</h2>
-						{bookingData.map((book, i) => {
-							if (book.type === "lektion") {
-								return <BookingItem key={i} {...book} />;
-							}
-						})}
-						<h2>Arrangementer</h2>
-						{bookingData.map((book, i) => {
-							if (book.type === "arrangement") {
-								return <BookingItem key={i} {...book} />;
-							}
-						})}
+						<div className={filter === 1 || filter === 0 ? "" : "notShown"}>
+							<h2>Kurser</h2>
+							{bookingData.map((book, i) => {
+								if (book.type === "kursus") {
+									return <BookingItem key={i} {...book} />;
+								}
+							})}
+						</div>
+						<div className={filter === 2 || filter === 0 ? "" : "notShown"}>
+							<h2>Lektioner</h2>
+							{bookingData.map((book, i) => {
+								if (book.type === "lektion") {
+									return <BookingItem key={i} {...book} />;
+								}
+							})}
+						</div>
+						<div className={filter === 3 || filter === 0 ? "" : "notShown"}>
+							<h2>Arrangementer</h2>
+							{bookingData.map((book, i) => {
+								if (book.type === "arrangement") {
+									return <BookingItem key={i} {...book} />;
+								}
+							})}
+						</div>
 					</>
 				)}
-				{filter === 1 && (
-					<>
-						<h2>Kurser</h2>
-						{bookingData.map((book, i) => {
-							if (book.type === "kursus") {
-								return <BookingItem key={i} {...book} />;
-							}
-						})}
-					</>
-				)}
-				{filter === 2 && (
-					<>
-						<h2>Lektioner</h2>
-						{bookingData.map((book, i) => {
-							if (book.type === "lektion") {
-								return <BookingItem key={i} {...book} />;
-							}
-						})}
-					</>
-				)}
-				{filter === 3 && (
-					<>
-						<h2>Arrangementer</h2>
-						{bookingData.map((book, i) => {
-							if (book.type === "arrangement") {
-								return <BookingItem key={i} {...book} />;
-							}
-						})}
-					</>
-				)}
+				{!bookingData.length && <Loading />}
 			</div>
 		</>
 	);

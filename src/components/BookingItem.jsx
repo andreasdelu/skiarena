@@ -23,7 +23,7 @@ export default function BookingItem(data) {
 
 	return (
 		<>
-			<div className='bookingItem'>
+			<div className={pickDate ? "bookingItem pickingDate" : "bookingItem"}>
 				<div className='bookingStart'>
 					<div className='bookingItemLeft'>
 						<p className='bookingName'>
@@ -70,11 +70,9 @@ export default function BookingItem(data) {
 						)}
 					</div>
 				</div>
-				{pickDate && (
-					<div className='bookingPickDate'>
-						<BookingCalendar />
-					</div>
-				)}
+				<div className='bookingPickDate'>
+					<BookingCalendar />
+				</div>
 			</div>
 		</>
 	);
