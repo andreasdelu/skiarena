@@ -63,39 +63,50 @@ export default function Home() {
 					</h2>
 					{/* Styling af ikoner */}
 					<div className='iconOverview'>
+					<Link to={"/kurser"}>
 						<div className='iconText'>
 							<img className='icon' src={kursus} alt='kursus ikon' />
-							<p className='titelIcons'>Kursus</p>
+							<span className='titelIcons'>Kursus</span>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
 								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
 								dolor sit amet, consectetur adipiscing elit.
 							</p>
 						</div>
+					</Link>
+					<Link to={"/lektioner"}>
 						<div className='iconText'>
 							<img src={lektion} alt='kursus ikon' />
+							<span className='titelIcons'>Lektioner</span>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
 								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
 								dolor sit amet, consectetur adipiscing elit.
 							</p>
 						</div>
+					</Link>
+					<Link to={"/arrangementer"}>
 						<div className='iconText'>
 							<img src={arrangementer} alt='kursus ikon' />
+							<span className='titelIcons'>Arrangementer</span>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
 								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
 								dolor sit amet, consectetur adipiscing elit.
 							</p>
 						</div>
+					</Link>
+					<Link to={"/priser"}>
 						<div className='iconText'>
 							<img src={priser} alt='kursus ikon' />
+							<span className='titelIcons'>Priser</span>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
 								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
 								dolor sit amet, consectetur adipiscing elit.
 							</p>
 						</div>
+					</Link>
 					</div>
 				</div>
 				<div
