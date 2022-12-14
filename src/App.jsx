@@ -3,9 +3,9 @@ import Home from "./pages/Home";
 import "./scss/Main.css";
 import "./scss/Pages.css";
 import "./scss/Components.css";
+import "./scss/mediaQueries.css";
 
 import PageLayout from "./layouts/PageLayout";
-import PageLayout2 from "./layouts/PageLayout2";
 import CourseLayout from "./layouts/CourseLayout";
 
 import Nav from "./components/Nav";
@@ -15,7 +15,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import Prices from "./pages/Prices";
 import Booking from "./pages/Booking";
 import Gavekort from "./pages/Gavekort";
-import IntroKursus from "./pages/kursus/IntroKursus";
 import BasisKursus from "./pages/kursus/BasisKursus";
 import MiniKursus from "./pages/kursus/MiniKursus";
 import FamilieKursus from "./pages/kursus/FamilieKursus";
@@ -37,7 +36,6 @@ import FirmaArrangement from "./pages/arrangementer/FirmaArrangement";
 import Polterabend from "./pages/arrangementer/Polterabend";
 
 import FAQ from "./pages/om/FAQ";
-import FindVej from "./pages/om/FindVej";
 import Job from "./pages/om/Job";
 import Kontakt from "./pages/om/Kontakt";
 import Presse from "./pages/om/Presse";
@@ -46,9 +44,7 @@ import Kurser from "./pages/Kurser";
 import Lektioner from "./pages/Lektioner";
 import Arrangementer from "./pages/Arrangementer";
 import { useEffect, useState } from "react";
-import { fetchWPData } from "./services/wpFetcher";
 import PageInfo from "./components/PageInfo";
-import BookCourse from "./pages/BookCourse";
 
 export default function App() {
 	const [pageData, setPageData] = useState([]);
@@ -58,7 +54,6 @@ export default function App() {
 			"https://skiarena-admin.delu.dk/wp-json/wp/v2/posts?per_page=100&_embed"
 		);
 		const data = await res.json();
-		console.log(data);
 
 		let dataArray = [];
 		data.forEach((post) => {
@@ -93,12 +88,14 @@ export default function App() {
 					<Route path='/' element={<Home />} />
 					<Route path='/kurser' element={<Kurser data={pageData} />} />
 					<Route path='/lektioner' element={<Lektioner data={pageData} />} />
-					<Route path='/arrangementer' element={<Arrangementer />} />
+					<Route
+						path='/arrangementer'
+						element={<Arrangementer data={pageData} />}
+					/>
 					<Route path='/cookies' element={<Cookies />} />
 					<Route path='/priser' element={<Prices />} />
 					<Route path='/gavekort' element={<Gavekort />} />
 					<Route path='/booking' element={<Booking />} />
-					<Route path='/booking/:course' element={<BookCourse />} />
 
 					<Route
 						path='/kurser/basis'
@@ -473,16 +470,18 @@ export default function App() {
 						element={<PageLayout content={<FAQ />} title={"FAQ"} />}
 					/>
 					<Route
-						path='/find-vej'
-						element={<PageLayout content={<FindVej />} title={"Find Vej"} />}
-					/>
-					<Route
 						path='/job'
 						element={<PageLayout content={<Job />} title={"Job"} />}
 					/>
 					<Route
 						path='/kontakt'
-						element={<PageLayout content={<Kontakt />} title={"Kontakt"} />}
+						element={
+							<PageLayout
+								content={<Kontakt />}
+								title={"Kontakt"}
+								wrapId={"contactPage"}
+							/>
+						}
 					/>
 					<Route
 						path='/presse'

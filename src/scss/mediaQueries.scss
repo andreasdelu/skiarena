@@ -1,0 +1,711 @@
+@use "Main";
+
+@media (max-width: 1200px) {
+	.giftCards {
+		width: 100%;
+		margin-right: 0px !important;
+	}
+	#giftCart {
+		width: 100vw;
+		max-width: 300px;
+		height: 450px;
+		transform: translate(100%, -50%);
+		position: fixed;
+		top: 50%;
+		right: 0;
+		z-index: 200;
+		transition: transform 0.2s;
+
+		.cartContent {
+			background-color: white;
+		}
+
+		.opener {
+			display: grid !important;
+		}
+
+		&:has(.openerOpen) {
+			transform: translate(0%, -50%);
+		}
+	}
+}
+@media (max-width: Main.$extraLarge) {
+	#navigation {
+		padding: 0 20px;
+	}
+	.pageWrap,
+	.courseWrap {
+		padding: 0 20px !important;
+	}
+	.pricesContent {
+		margin: 0 20px !important;
+	}
+	.iconOverview {
+		grid-template-columns: repeat(2, 50%) !important;
+		place-items: center;
+	}
+	#contactPage {
+		#contactWrap {
+			margin: 0px !important;
+		}
+	}
+}
+
+/* $large: 950px; */
+@media (max-width: Main.$large) {
+	.overlayContent {
+		flex-direction: column;
+		width: 100% !important;
+		align-items: center;
+		gap: 25px !important;
+		.overlayLeft {
+			width: 70% !important;
+		}
+		.overlayRight {
+			width: 80% !important;
+			max-width: 400px;
+			h1 {
+				font-size: 1.8rem !important;
+				margin: 0;
+			}
+			h2 {
+				font-size: 1.1rem !important;
+				margin: 0;
+			}
+			.ctaButton {
+				margin: 20px auto 0 auto !important;
+				font-size: 1.1rem !important;
+			}
+		}
+	}
+	#navigation {
+		#nav {
+			display: none;
+		}
+
+		#bookButton {
+			display: none;
+		}
+
+		#navMobile {
+			display: block;
+		}
+	}
+	#contactWrap {
+		flex-direction: column;
+		height: auto;
+		margin: 0 20px;
+
+		#telMail {
+			gap: 20px !important;
+		}
+
+		#mapCard {
+			max-width: 500px;
+		}
+	}
+
+	.courseWrap {
+		margin: 0 auto;
+		margin-top: 120px;
+		max-width: 1200px;
+		box-sizing: border-box;
+		padding: 0 50px;
+		min-height: 60vh;
+		display: flex;
+		justify-content: space-between;
+
+		.courseWrapLeft {
+			width: 100%;
+			.pageInfoWrap {
+				display: flex !important;
+			}
+		}
+		.courseWrapRight {
+			display: none;
+			width: 30%;
+			border-left: 1px solid Main.$blue;
+			height: fit-content;
+			padding: 1rem;
+
+			.courseInfoWrap {
+				flex-direction: column;
+				.courseInfoRight {
+					margin-top: 50px;
+				}
+			}
+		}
+
+		.pageInfoWrap {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			.pageInfoRight {
+				align-self: flex-start;
+			}
+
+			.pageInfoLeft {
+				ul {
+					margin-top: 0;
+
+					li:first-child {
+						margin-top: 0;
+					}
+				}
+			}
+		}
+
+		.courseInfoImage {
+			width: 100%;
+			height: 300px;
+			background-position: top;
+			background-size: cover;
+			background-repeat: no-repeat;
+			border-radius: 10px;
+			margin-bottom: 25px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	#footer {
+		height: auto;
+		.footerWrap {
+			flex-direction: column;
+		}
+		.footerSection {
+			margin: 0;
+			align-items: center;
+			font-size: 0.8rem !important;
+			h6 {
+				font-size: 1rem !important;
+			}
+			p {
+				text-align: center;
+			}
+
+			.socialLinks {
+				gap: 10px !important;
+				img {
+					width: 20px !important;
+				}
+			}
+		}
+		.footerBottom {
+			margin-top: 20px;
+			font-size: 0.8rem !important;
+		}
+	}
+	.imagePopup {
+		.popupContent {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			gap: 10px;
+			background-color: white;
+			border-radius: 10px;
+			padding: 1rem;
+			box-sizing: border-box;
+			height: auto;
+			max-width: 1200px;
+			margin: 0 50px;
+			margin-top: 70px;
+			position: relative;
+			filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.258));
+			.popupImage {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0 auto;
+				height: 100%;
+				border-right: none;
+				border-bottom: 1px solid rgb(239, 239, 239);
+				padding-right: 0;
+				padding-bottom: 10px;
+
+				img {
+					max-width: 100%;
+					height: 100%;
+					max-height: 60vh;
+				}
+			}
+
+			.popupDesc {
+				width: 300px;
+				height: 100%;
+				margin-left: 0;
+				margin-right: auto;
+
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+
+			.clickableTitle {
+				margin: 0;
+				margin-bottom: 0.3rem;
+				font-weight: 700;
+				font-size: 1.2rem;
+			}
+			.clickableDesc {
+				margin: 0;
+				padding-right: 25px;
+				font-size: 0.9rem;
+			}
+			.popupClose {
+				position: absolute;
+				right: 10px;
+				top: 10px;
+				cursor: pointer;
+				width: 1rem;
+				padding: 10px;
+
+				&:hover {
+					filter: invert(73%) sepia(42%) saturate(5064%) hue-rotate(178deg)
+						brightness(90%) contrast(84%);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 750px) {
+	.homeImages {
+		grid-template-columns: 1fr 1fr !important;
+		grid-template-rows: 1fr 1fr 1fr !important;
+		height: 100% !important;
+		padding-bottom: 20px !important;
+		.imageClickable {
+			&:first-child {
+				grid-row: span 1 !important;
+				aspect-ratio: 1 !important;
+			}
+			&:nth-child(3) {
+				grid-column: span 1 !important;
+				aspect-ratio: 1 !important;
+			}
+		}
+	}
+	#navigation {
+		height: 60px !important;
+
+		#logoWrapper {
+			height: 40px !important;
+		}
+
+		.burgerNav {
+			top: 60px !important;
+			max-height: calc(100vh - 60px);
+			.mobileMenuLink {
+				font-size: 1.2rem !important;
+				margin: 0 20px !important;
+			}
+		}
+	}
+	.courseWrap {
+		margin-top: 100px !important;
+	}
+	.courseInfoImage {
+		height: 200px !important;
+	}
+	.pageTitle {
+		font-size: 2rem !important;
+	}
+	.sectionTitle {
+		font-size: 2rem !important;
+		margin-left: 20px !important;
+		margin-right: 20px !important;
+	}
+	.calendarWrap {
+		margin-right: 0 !important;
+		flex-direction: column;
+		max-height: none !important;
+
+		.bookingTime {
+			max-width: 400px !important;
+			/* min-height: 400px; */
+			flex-direction: column;
+
+			.bookingTimes {
+				margin-bottom: 20px !important;
+			}
+
+			.bookingTimeTitle {
+				width: 100%;
+				display: block;
+			}
+			small {
+				width: 100%;
+				margin-bottom: 10px !important;
+			}
+
+			.timeToBook {
+				width: 50%;
+				font-size: 0.8rem !important;
+				line-height: 1.1rem !important;
+			}
+		}
+		.bookingTimeOverlay {
+			max-width: 400px !important;
+			padding: 0 5px 10px 5px !important;
+
+			b {
+				font-size: 0.9rem !important;
+			}
+			p {
+				margin-top: 0.5rem !important;
+				font-size: 0.8rem !important;
+				line-height: normal !important;
+			}
+
+			.ctaButton {
+				margin: 0px auto 0 auto !important;
+				height: fit-content;
+			}
+		}
+		.confirmWrap {
+			max-width: 400px !important;
+			padding: 0 5px 10px 5px !important;
+			.confirmBookingTitle {
+				font-size: 1rem !important;
+			}
+			p {
+				margin-top: 0.5rem !important;
+				font-size: 0.8rem !important;
+				line-height: normal !important;
+			}
+		}
+	}
+	.bookingItem {
+		max-width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+		.bookingStart {
+			/* min-height: 250px; */
+			flex-direction: column;
+			gap: 40px !important;
+			.bookingItemLeft {
+				width: 100% !important;
+				align-items: center;
+				.bookingName {
+					font-size: 1rem !important;
+				}
+
+				.valuePicker {
+					margin-top: 20px !important;
+				}
+			}
+			.bookingItemMid {
+				width: 100% !important;
+				label {
+				}
+
+				.bookingItemPrice {
+				}
+			}
+			.bookingItemRight {
+				width: 100% !important;
+				max-width: 200px;
+				margin-left: auto;
+				margin-right: auto;
+				p {
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	.giftcardItem {
+		margin: 0 auto;
+		margin-top: 25px;
+		display: flex;
+		width: 300px;
+		min-height: 120px;
+		justify-content: space-between;
+		align-items: center;
+		gap: 30px;
+		box-sizing: border-box;
+		flex-direction: column;
+
+		/* background-color: rgb(250, 250, 250); */
+		padding: 20px 10px;
+		border-radius: 10px;
+		box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.1);
+
+		.giftcardItemLeft {
+			max-width: 250px;
+
+			.giftName {
+				font-weight: 600;
+				text-align: center;
+				margin-bottom: 30px;
+				margin-top: 0;
+			}
+			.valuePicker {
+				margin: 0 auto;
+			}
+		}
+		.giftcardItemMid {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			margin-left: 0;
+			margin-right: 0;
+
+			label {
+				font-size: 13px;
+			}
+			.customGiftValue {
+				display: grid;
+				grid-template-columns: 75% 25%;
+				width: 120px;
+				border: 2px solid rgba(200, 200, 200, 0.3);
+				border-radius: 5px;
+
+				input {
+					border: none;
+					display: grid;
+					place-items: center;
+					text-align: center;
+					font-size: 14px;
+
+					&:focus {
+						outline: none;
+					}
+				}
+
+				p {
+					margin: 0;
+					font-weight: 400;
+					background-color: rgba(200, 200, 200, 0.3);
+					text-align: center;
+					padding: 3px;
+					font-size: 14px;
+				}
+			}
+		}
+		.giftcardItemRight {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			p {
+				text-align: center;
+				margin: 0;
+			}
+			width: 200px;
+		}
+	}
+
+	/* ===== IKON SEKTION  ===== */
+	.iconOverview {
+		p {
+			font-size: 1rem;
+		}
+
+		.icon {
+			height: 80px !important;
+		}
+
+		.titelIcons {
+			font-size: 1.4rem !important;
+			font-weight: 500 !important;
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	#homeHero {
+		height: 95vh !important;
+	}
+	.overlayLeft {
+		img {
+			max-width: 300px;
+		}
+	}
+	.pageTitle {
+		font-size: 1.5rem;
+	}
+	.sectionTitle {
+		font-size: 1.8rem !important;
+	}
+	.aabningSektion {
+		grid-template-columns: repeat(1, 1fr);
+		.aabningInfo {
+		}
+
+		.tiderWrapper {
+		}
+	}
+	#bookingFilter {
+		display: flex;
+		width: fit-content;
+		position: relative;
+
+		background-color: rgb(250, 250, 250);
+		border-radius: 999px;
+		overflow: hidden;
+		margin: 30px auto !important;
+
+		.filter {
+			padding: 0 12px !important;
+		}
+	}
+}
+
+@media (max-width: 500px) {
+	.calendarWrap {
+		margin-right: 0 !important;
+		flex-direction: column;
+		.bookingCalendar {
+			gap: 5px;
+			.calendarDate {
+				p {
+					font-size: 0.7rem !important;
+					line-height: 0.8rem;
+
+					&:first-child {
+						font-size: 0.7rem !important;
+						color: rgb(160, 160, 160);
+					}
+				}
+			}
+			.calendarExplain {
+				margin-top: 1rem;
+				font-size: 0.7rem !important;
+				position: relative;
+				padding-left: 0rem !important;
+				gap: 16px !important;
+			}
+		}
+	}
+	.pageWrap {
+		margin-top: 100px !important;
+		font-size: 0.9rem !important;
+	}
+	#pricesWrap {
+		margin-top: 100px !important;
+	}
+	.giftcardItem {
+		margin-top: 25px;
+		width: 300px;
+		gap: 20px;
+
+		.giftName {
+			font-size: 1rem !important;
+		}
+
+		.giftcardItemLeft {
+			max-width: 250px;
+
+			.giftName {
+				font-weight: 600;
+				text-align: center;
+				margin-bottom: 30px;
+				margin-top: 0;
+			}
+			.valuePicker {
+				margin: 0 auto;
+			}
+		}
+		.giftcardItemMid {
+			label {
+				font-size: 13px;
+			}
+			.customGiftValue {
+				width: 100px;
+
+				input {
+					font-size: 12px;
+				}
+
+				p {
+					font-size: 12px;
+				}
+			}
+		}
+		.giftcardItemRight {
+			width: 180px;
+		}
+	}
+	#navigation {
+		height: 60px !important;
+
+		#logoWrapper {
+			height: 36px !important;
+		}
+		.burgerNav {
+			top: 60px !important;
+			max-height: calc(100vh - 60px);
+		}
+	}
+	.overlayContent {
+		flex-direction: column;
+		width: 100% !important;
+		align-items: center;
+
+		.overlayRight {
+			h1 {
+				font-size: 2rem !important;
+				margin: 0;
+			}
+			h2 {
+				font-size: 1.2rem !important;
+				margin: 0;
+			}
+			.ctaButton {
+				margin: 0 auto;
+				font-size: 1.3rem;
+			}
+		}
+	}
+	.ctaButton {
+		font-size: 0.9rem !important;
+	}
+	p {
+		font-size: 0.9rem !important;
+	}
+	li {
+		font-size: 0.9rem !important;
+	}
+	small {
+		font-size: 0.7rem !important;
+	}
+	td,
+	th {
+		font-size: 0.8rem !important;
+	}
+	.priceCol {
+		width: 50px !important;
+	}
+	.pricesInfo {
+		font-size: 0.9rem !important;
+	}
+	.iconOverview {
+		grid-template-columns: repeat(1, 100%) !important;
+		gap: 25px !important;
+
+		.iconText {
+			margin: 0px 10px !important;
+			padding: 0px 10px !important;
+			min-height: 230px !important;
+			justify-content: center !important;
+		}
+
+		.icon {
+			height: 70px !important;
+		}
+
+		.titelIcons {
+			font-size: 1.1rem !important;
+			margin: 10px auto -5px auto;
+		}
+
+		p {
+			font-size: 0.8rem;
+		}
+	}
+}

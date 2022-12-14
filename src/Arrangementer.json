@@ -1,0 +1,23 @@
+[
+	{
+		"id": 1,
+		"titel": "Firmaarrangement",
+		"description": "Skal I med firmaet ud og have en spændende og sjov dag væk fra kontoret?",
+		"price": "1500",
+		"link": "/arrangementer/firma"
+	},
+	{
+		"id": 2,
+		"titel": "Polterabend",
+		"description": "Når I holder polterabend i SkiArena, er i sikre på at få en sjov og mindeværdig oplevelse.",
+		"price": "650",
+		"link": "/arrangementer/polterabend"
+	},
+	{
+		"id": 3,
+		"titel": "Blå Mandag",
+		"description": "Hold Blå Mandag i SkiArena og få en hyggelig og sjov dag, til en god pris.",
+		"price": "200",
+		"link": "/arrangementer/blaa-mandag"
+	}
+]

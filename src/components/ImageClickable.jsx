@@ -37,10 +37,10 @@ export default function ImageClickable({ src, title = "", desc = "" }) {
 						<div className='popupImage'>
 							<img src={src} alt={title} />
 						</div>
-						<div className='popupDesc'>
+						{/* <div className='popupDesc'>
 							<p className='clickableTitle'>{title}</p>
 							<p className='clickableDesc'>{desc}</p>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			)}

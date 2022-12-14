@@ -9,8 +9,14 @@ export default function Nav() {
 	const [drop2, setDrop2] = useState(false);
 	const [drop3, setDrop3] = useState(false);
 	const [drop4, setDrop4] = useState(false);
+	const [mobileDrop1, setMobileDrop1] = useState(false);
+	const [mobileDrop2, setMobileDrop2] = useState(false);
+	const [mobileDrop3, setMobileDrop3] = useState(false);
+	const [mobileDrop4, setMobileDrop4] = useState(false);
 	const navRef = useRef(null);
 	const logoRef = useRef(null);
+	const burgerNavRef = useRef(null);
+	const burgerIconRef = useRef(null);
 
 	const location = useLocation();
 
@@ -32,6 +38,14 @@ export default function Nav() {
 
 	useEffect(() => {
 		window.addEventListener("scroll", handleNavScroll, false);
+		setDrop1(false);
+		setDrop2(false);
+		setDrop3(false);
+		setDrop4(false);
+		if (burgerNavRef.current.classList.contains("burgerActive")) {
+			openMobileNav();
+		}
+
 		return () => {
 			window.removeEventListener("scroll", handleNavScroll, false);
 		};
@@ -58,7 +72,33 @@ export default function Nav() {
 			setDrop2(false);
 			setDrop3(false);
 			setDrop4(false);
+			openMobileNav();
 		}
+	}
+
+	function openMobileNav() {
+		setMobileDrop1(false);
+		setMobileDrop2(false);
+		setMobileDrop3(false);
+		setMobileDrop4(false);
+		if (burgerNavRef.current.classList.contains("burgerActive")) {
+			burgerNavRef.current.classList.remove("burgerActive");
+		} else {
+			burgerNavRef.current.classList.add("burgerActive");
+		}
+		if (burgerIconRef.current.classList.contains("burgerIconActive")) {
+			burgerIconRef.current.classList.remove("burgerIconActive");
+		} else {
+			burgerIconRef.current.classList.add("burgerIconActive");
+		}
+	}
+
+	function toggleMobileDropdown(dropdown, value) {
+		setMobileDrop1(false);
+		setMobileDrop2(false);
+		setMobileDrop3(false);
+		setMobileDrop4(false);
+		dropdown(!value);
 	}
 
 	return (
@@ -156,7 +196,6 @@ export default function Nav() {
 							<div onClick={closeDropdown} className='dropdownMenu'>
 								<NavLink to={"/faq"}>FAQ</NavLink>
 								<NavLink to={"/kontakt"}>Kontakt</NavLink>
-								<NavLink to={"/find-vej"}>Find vej</NavLink>
 								<NavLink to={"/job"}>Job</NavLink>
 								<NavLink to={"/presse"}>Presse</NavLink>
 								<NavLink to={"/betingelser"}>Betingelser</NavLink>
@@ -168,6 +207,190 @@ export default function Nav() {
 					<Link className='ctaButton' to={"/booking"}>
 						Book nu
 					</Link>
+				</div>
+				<div id='navMobile'>
+					<svg
+						ref={burgerIconRef}
+						onClick={openMobileNav}
+						id='burgerIcon'
+						xmlns='http://www.w3.org/2000/svg'
+						viewBox='0 0 50 50'>
+						<rect
+							className='burgerline line-1'
+							y='7'
+							width='50'
+							height='6'
+							rx='3'
+							ry='3'
+						/>
+						<rect
+							className='burgerline line-2'
+							y='22'
+							width='50'
+							height='6'
+							rx='3'
+							ry='3'
+						/>
+						<rect
+							className='burgerline line-3'
+							y='37'
+							width='50'
+							height='6'
+							rx='3'
+							ry='3'
+						/>
+					</svg>
+					<div ref={burgerNavRef} className='burgerNav'>
+						<div className='mobileMenuItem'>
+							<div className='mobileMenuTop'>
+								<Link to={"/kurser"} className='mobileMenuLink'>
+									Kurser
+								</Link>
+								<img
+									onClick={() =>
+										toggleMobileDropdown(setMobileDrop1, mobileDrop1)
+									}
+									className={
+										mobileDrop1
+											? "mobileArrow mobileArrowRotate"
+											: "mobileArrow"
+									}
+									src={Arrow}
+									alt='Dropdown'
+								/>
+							</div>
+							<div
+								onClick={closeDropdown}
+								className={
+									mobileDrop1
+										? "mobileMenuDropdown mobileDropActive"
+										: "mobileMenuDropdown"
+								}>
+								<NavLink to={"/kurser/basis"}>Basiskursus</NavLink>
+								<NavLink to={"/kurser/mini"}>Minikursus</NavLink>
+								<NavLink to={"/kurser/familie"}>Familiekursus</NavLink>
+								<NavLink to={"/kurser/teknik"}>Teknikkursus</NavLink>
+								<NavLink to={"/kurser/firma"}>Firmakursus</NavLink>
+								<NavLink to={"/kurser/dds"}>DDS - Forberedende Kursus</NavLink>
+							</div>
+						</div>
+						<div className='mobileMenuItem'>
+							<div className='mobileMenuTop'>
+								<Link to={"/lektioner"} className='mobileMenuLink'>
+									Lektioner
+								</Link>
+								<img
+									onClick={() =>
+										toggleMobileDropdown(setMobileDrop2, mobileDrop2)
+									}
+									className={
+										mobileDrop2
+											? "mobileArrow mobileArrowRotate"
+											: "mobileArrow"
+									}
+									src={Arrow}
+									alt='Dropdown'
+								/>
+							</div>
+							<div
+								onClick={closeDropdown}
+								className={
+									mobileDrop2
+										? "mobileMenuDropdown mobileDropActive"
+										: "mobileMenuDropdown"
+								}>
+								<NavLink to={"/lektioner/enkelt"}>Enkeltlektion</NavLink>
+								<NavLink to={"/lektioner/personlig"}>Personlig Lektion</NavLink>
+								<NavLink to={"/lektioner/proeve"}>
+									Prøvelektion - 2 pers.
+								</NavLink>
+								<NavLink to={"/lektioner/3-paa-baandet"}>3 På Båndet</NavLink>
+								<NavLink to={"/lektioner/familie"}>Familielektion</NavLink>
+								<NavLink to={"/lektioner/gruppe"}>Gruppelektion</NavLink>
+								<NavLink to={"/lektioner/snowboard"}>Snowboardlektion</NavLink>
+								<NavLink to={"/lektioner/snowboard-familie"}>
+									Snowboard - Familielektion
+								</NavLink>
+							</div>
+						</div>
+						<div className='mobileMenuItem'>
+							<div className='mobileMenuTop'>
+								<Link to={"/arrangementer"} className='mobileMenuLink'>
+									Arrangementer
+								</Link>
+								<img
+									onClick={() =>
+										toggleMobileDropdown(setMobileDrop3, mobileDrop3)
+									}
+									className={
+										mobileDrop3
+											? "mobileArrow mobileArrowRotate"
+											: "mobileArrow"
+									}
+									src={Arrow}
+									alt='Dropdown'
+								/>
+							</div>
+							<div
+								onClick={closeDropdown}
+								className={
+									mobileDrop3
+										? "mobileMenuDropdown mobileDropActive"
+										: "mobileMenuDropdown"
+								}>
+								<NavLink to={"/arrangementer/firma"}>Firmaarrangement</NavLink>
+								<NavLink to={"/arrangementer/polterabend"}>Polterabend</NavLink>
+								<NavLink to={"/arrangementer/blaa-mandag"}>Blå Mandag</NavLink>
+							</div>
+						</div>
+						<div className='mobileMenuItem'>
+							<div className='mobileMenuTop'>
+								<NavLink className='mobileMenuLink' to={"/priser"}>
+									Priser
+								</NavLink>
+							</div>
+						</div>
+						<div className='mobileMenuItem'>
+							<div className='mobileMenuTop'>
+								<NavLink to={"/gavekort"} className='mobileMenuLink'>
+									Gavekort
+								</NavLink>
+							</div>
+						</div>
+						<div className='mobileMenuItem'>
+							<div className='mobileMenuTop'>
+								<p className='mobileMenuLink'>Om os</p>
+								<img
+									onClick={() =>
+										toggleMobileDropdown(setMobileDrop4, mobileDrop4)
+									}
+									className={
+										mobileDrop4
+											? "mobileArrow mobileArrowRotate"
+											: "mobileArrow"
+									}
+									src={Arrow}
+									alt='Dropdown'
+								/>
+							</div>
+							<div
+								onClick={closeDropdown}
+								className={
+									mobileDrop4
+										? "mobileMenuDropdown mobileDropActive"
+										: "mobileMenuDropdown"
+								}>
+								<NavLink to={"/faq"}>FAQ</NavLink>
+								<NavLink to={"/kontakt"}>Kontakt</NavLink>
+								<NavLink to={"/job"}>Job</NavLink>
+								<NavLink to={"/presse"}>Presse</NavLink>
+								<NavLink to={"/betingelser"}>Betingelser</NavLink>
+							</div>
+						</div>
+						<Link className='ctaButton' to={"/booking"}>
+							Book nu
+						</Link>
+					</div>
 				</div>
 			</nav>
 		</>

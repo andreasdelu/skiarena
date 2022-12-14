@@ -19,6 +19,17 @@ export default function Booking() {
 	const selectorRef = useRef(null);
 
 	useEffect(() => {
+		resizeFilter(filter);
+	}, [filter]);
+
+	useEffect(() => {
+		window.addEventListener("resize", resizeFilter, false);
+		return () => {
+			window.removeEventListener("resize", resizeFilter, false);
+		};
+	}, []);
+
+	function resizeFilter(filter) {
 		let widthAlle = filterAlleRef.current.offsetWidth;
 		let widthKurser = filterKurserRef.current.offsetWidth;
 		let widthLektioner = filterLektionerRef.current.offsetWidth;
@@ -56,14 +67,14 @@ export default function Booking() {
 				break;
 
 			default:
-				selectorRef.current.style.left = "0px";
-				selectorRef.current.style.width = widthAlle + "px";
+				/* selectorRef.current.style.left = "0px";
+				selectorRef.current.style.width = widthAlle + "px"; */
 				break;
 		}
 		setTimeout(() => {
 			selectorRef.current.style.height = "100%";
 		}, 100);
-	}, [filter]);
+	}
 
 	return (
 		<>

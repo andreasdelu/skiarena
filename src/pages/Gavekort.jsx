@@ -4,11 +4,13 @@ import GiftcardItem from "../components/GiftcardItem";
 import giftcardData from "../Gavekort.json";
 
 import cart from "../assets/images/cart.svg";
+import close from "../assets/images/close.svg";
 
 export default function Gavekort() {
 	document.title = "SkiArena - Køb Gavekort";
 
 	const cartRef = useRef(null);
+	const openerRef = useRef(null);
 
 	const [shoppingCart, setShoppingCart] = useState([]);
 
@@ -59,7 +61,19 @@ export default function Gavekort() {
 			amount: amount,
 			total: total,
 		};
+
 		setShoppingCart((shoppingCart) => [...shoppingCart, cartObject]);
+		if (!shoppingCart.length) {
+			openCart();
+		}
+	}
+
+	function openCart() {
+		if (openerRef.current.classList.contains("openerOpen")) {
+			openerRef.current.classList.remove("openerOpen");
+		} else {
+			openerRef.current.classList.add("openerOpen");
+		}
 	}
 
 	return (
@@ -72,9 +86,14 @@ export default function Gavekort() {
 					))}
 				</div>
 				<div id='giftCart'>
+					<div ref={openerRef} onClick={openCart} className='opener'>
+						<p className='cartCount'>{shoppingCart.length}</p>
+						<img className='openerCart' src={cart} alt='cart' />
+						<img className='openerClose' src={close} alt='close' />
+					</div>
 					<div className='cartContent'>
 						<h2>
-							<img src={cart} alt='' /> Indkøbskurv
+							<img src={cart} alt='cart' /> Indkøbskurv
 						</h2>
 						<hr />
 						<div ref={cartRef} className='shoppingCart'>

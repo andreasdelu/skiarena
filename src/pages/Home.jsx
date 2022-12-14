@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import video from "../assets/videos/SkiArena.mp4";
 import logo from "../assets/images/skiarenalogo-white.svg";
@@ -10,6 +10,9 @@ import Card from "../components/Card";
 import ski from "../assets/images/ski-placeholder.jpeg";
 import ski2 from "../assets/images/ski-placeholder-2.jpeg";
 import ImageClickable from "../components/ImageClickable";
+
+import skislope from "../assets/images/skislope-donee.svg";
+import fjernbetjening from "../assets/images/fjernbetjening.svg";
 
 /* Import til iconer */
 import kursus from "../assets/images/icons/kursus-icon.svg";
@@ -27,6 +30,30 @@ export default function Home() {
 		console.log(e.target.contactCompany.value);
 		console.log(e.target.contactMessage.value);
 	}
+
+	const [featuredImages, setFeaturedImages] = useState([]);
+
+	async function getData() {
+		const res = await fetch(
+			"https://skiarena-admin.delu.dk/wp-json/wp/v2/posts?slug=galleri-forside"
+		);
+		const data = await res.json();
+		let dataArray = data[0].content.rendered.split(" ");
+		let arr = [];
+		dataArray.forEach((d) => {
+			if (d.includes("src=")) {
+				let replaced = d.replaceAll("src=", "");
+				replaced = replaced.replaceAll('"', "");
+				arr.push(replaced);
+			}
+		});
+
+		setFeaturedImages(arr);
+	}
+
+	useEffect(() => {
+		getData();
+	}, []);
 
 	return (
 		<>
@@ -63,50 +90,46 @@ export default function Home() {
 					</h2>
 					{/* Styling af ikoner */}
 					<div className='iconOverview'>
-					<Link to={"/kurser"}>
-						<div className='iconText'>
-							<img className='icon' src={kursus} alt='kursus ikon' />
-							<span className='titelIcons'>Kursus</span>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
-								dolor sit amet, consectetur adipiscing elit.
-							</p>
-						</div>
-					</Link>
-					<Link to={"/lektioner"}>
-						<div className='iconText'>
-							<img src={lektion} alt='kursus ikon' />
-							<span className='titelIcons'>Lektioner</span>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
-								dolor sit amet, consectetur adipiscing elit.
-							</p>
-						</div>
-					</Link>
-					<Link to={"/arrangementer"}>
-						<div className='iconText'>
-							<img src={arrangementer} alt='kursus ikon' />
-							<span className='titelIcons'>Arrangementer</span>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
-								dolor sit amet, consectetur adipiscing elit.
-							</p>
-						</div>
-					</Link>
-					<Link to={"/priser"}>
-						<div className='iconText'>
-							<img src={priser} alt='kursus ikon' />
-							<span className='titelIcons'>Priser</span>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-								luctus posuere ex ut dapibus. Sed ac lectus leo. Lorem ipsum
-								dolor sit amet, consectetur adipiscing elit.
-							</p>
-						</div>
-					</Link>
+						<Link to={"/kurser"}>
+							<div className='iconText'>
+								<img className='icon' src={kursus} alt='kursus ikon' />
+								<span className='titelIcons'>Kursus</span>
+								<p>
+									Vi tilbyder en række forskellige kurser i SkiArena, ved at
+									klikke videre kan du læse meget mere om de enkelte kurser.
+								</p>
+							</div>
+						</Link>
+						<Link to={"/lektioner"}>
+							<div className='iconText'>
+								<img className='icon' src={lektion} alt='kursus ikon' />
+								<span className='titelIcons'>Lektioner</span>
+								<p>
+									En ski-lektion i SkiArena varer en time. Der kan være 3
+									deltagere på båndet samtidig, som bliver inddelt efter niveau.
+								</p>
+							</div>
+						</Link>
+						<Link to={"/arrangementer"}>
+							<div className='iconText'>
+								<img className='icon' src={arrangementer} alt='kursus ikon' />
+								<span className='titelIcons'>Arrangementer</span>
+								<p>
+									Vi afholder en lang række arrangementer. Hos os er alle
+									velkomne og vi kan skræddersy et arrangement netop til jer.
+								</p>
+							</div>
+						</Link>
+						<Link to={"/priser"}>
+							<div className='iconText'>
+								<img className='icon' src={priser} alt='kursus ikon' />
+								<span className='titelIcons'>Priser</span>
+								<p>
+									Her kan du få en oversigt over SkiArenas priser og tilbud.
+									Alle priser er inklusiv instruktør og leje af udstyr.
+								</p>
+							</div>
+						</Link>
 					</div>
 				</div>
 				<div
@@ -115,54 +138,57 @@ export default function Home() {
 						backgroundImage: `url(${bluebg})`,
 						backgroundPositionX: "100vw",
 					}}>
-					<h2 className='sectionTitle'>Hurtige links</h2>
+					<h2 className='sectionTitle'>Hvordan fungerer det?</h2>
+
+					<div className='infographic-top'>
+						<img
+							className='info-top-img'
+							src={skislope}
+							alt='infograhic slope'
+						/>
+						<div className='info-tekst'>
+							<p>
+								<h1>Skislope</h1>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+								nemo illo ipsum neque ab necessitatibus quos qui sapiente amet
+								obcaecati sit maxime ipsa, vel molestias optio quam impedit
+								distinctio laudantium?
+								<br />
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+								nemo illo ipsum neque ab necessitatibus quos qui sapiente amet
+								obcaecati sit maxime ipsa, vel molestias optio quam impedit
+								distinctio laudantium?
+							</p>
+						</div>
+					</div>
+					<div className='infographic-bot'>
+						<p>
+							<h1>Fjernbetjening</h1>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+							nemo illo ipsum neque ab necessitatibus quos qui sapiente amet
+							obcaecati sit maxime ipsa, vel molestias optio quam impedit
+							distinctio laudantium?
+							<br />
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+							nemo illo ipsum neque ab necessitatibus quos qui sapiente amet
+							obcaecati sit maxime ipsa, vel molestias optio quam impedit
+							distinctio laudantium?
+						</p>
+						<img
+							className='info-bot-img'
+							src={fjernbetjening}
+							alt='infograhic fjernbetjening'
+						/>
+					</div>
 				</div>
 				<div className='homeSection'>
 					<h2 className='sectionTitle'>Billeder</h2>
 					<div className='homeImages'>
-						<ImageClickable
-							src={ski2}
-							title='Test'
-							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
-					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
-					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
-						/>
-						<ImageClickable
-							src={ski2}
-							title='Test'
-							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
-					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
-					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
-						/>
-
-						<ImageClickable
-							src={ski}
-							title='Test'
-							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
-					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
-					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
-						/>
-						<ImageClickable
-							src={ski2}
-							title='Test'
-							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
-					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
-					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
-						/>
-						<ImageClickable
-							src={ski2}
-							title='Test'
-							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
-					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
-					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
-						/>
-						<ImageClickable
-							src={ski}
-							title='Test'
-							desc='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam
-					vel esse placeat ipsam, beatae rerum aliquid in aut nesciunt enim
-					tenetur itaque autem amet deleniti fugiat sunt quis ullam?'
-						/>
+						{featuredImages.map((img, i) => {
+							if (i <= 6) {
+								return <ImageClickable key={i} src={img} />;
+							}
+						})}
 					</div>
 				</div>
 				<div
@@ -172,6 +198,49 @@ export default function Home() {
 						backgroundPositionX: "50vw",
 					}}>
 					<h2 className='sectionTitle'>Åbningstider</h2>
+
+					<div className='aabningSektion'>
+						<div className='tiderWrapper'>
+							<div className='dage'>
+								<p className='aabningText'>
+									Mandag: <br /> Tirsdag: <br /> Onsdag: <br />
+									Torsdag: <br /> Fredag: <br /> Lørdag: <br /> Søndag:
+								</p>
+							</div>
+							<div className='tider'>
+								<p className='aabningText'>
+									14:30 - 20:00 <br /> 14:30 - 20:00 <br /> 14:30 - 20:00 <br />
+									14:30 - 20:00 <br /> 14:30 - 20:00 <br /> 10:00 - 20:00
+									<br /> 10:00 - 20:00
+								</p>
+							</div>
+							<div className='borderLine'></div>
+						</div>
+						<div className='aabningInfo'>
+							<p>
+								<b>Specielle Arrangementer:</b> <br /> Efter aftale
+								<br />
+								<br />
+								<b>Ferier:</b>
+								<br />
+								Ofte har vi forlænget åbningstider i ferierne. <br />
+								Oftest kl. 10-20 alle dage. <br /> Følg med på vores Facebook,
+								<br /> for at se, hvornår vi holder special-åbent
+							</p>
+						</div>
+						<div className='generelInfo'>
+							<p>
+								<b>Husk der kræves bookning på forhånd, for at åbne båndet.</b>
+							</p>
+							<p>
+								Har du et ønske om at besøge os udenfor vores normale åbningstid
+								kan vi naturligvis også klare det.
+							</p>
+							<p>
+								Arrangementer kan ligeledes bookes udenfor normal åbningstid.
+							</p>
+						</div>
+					</div>
 				</div>
 				<div className='homeSection'>
 					<h2 className='sectionTitle'>Kontakt</h2>

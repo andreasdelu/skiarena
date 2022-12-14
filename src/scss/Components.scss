@@ -41,6 +41,29 @@
 				color: white;
 			}
 		}
+
+		.burgerNav {
+			top: 0px !important;
+			padding-top: 60px !important;
+			a,
+			p {
+				color: white !important;
+			}
+			background-color: rgba(0, 0, 0, 0.9) !important;
+			border: 1px solid rgba(234, 234, 234, 0.1) !important;
+
+			.mobileMenuItem {
+				&:last-child {
+					.mobileMenuTop {
+						border: none !important;
+					}
+				}
+			}
+
+			.mobileMenuTop {
+				border-bottom: 1px solid rgba(248, 248, 248, 0.5) !important;
+			}
+		}
 	}
 
 	#nav {
@@ -55,6 +78,9 @@
 	#logoNav {
 		height: 100%;
 		width: auto;
+		position: relative;
+		isolation: isolate;
+		z-index: 5;
 	}
 
 	#logoWrapper {
@@ -79,6 +105,10 @@
 		height: 100%;
 		display: flex;
 		align-items: center;
+		&.active {
+			font-weight: 400;
+			color: Main.$blue;
+		}
 	}
 
 	.menuItem {
@@ -116,31 +146,6 @@
 			}
 		}
 	}
-
-	/* .dropdownMenu {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: absolute;
-		gap: 20px;
-		background-color: white;
-		width: 100vw;
-		left: 0;
-		top: 70px;
-		min-height: 40px;
-		text-align: none;
-		border-top: 1px solid rgb(234, 234, 234);
-
-		a {
-			color: black;
-			text-decoration: none;
-			padding: 16px;
-
-			&:hover {
-				color: Main.$blue;
-			}
-		}
-	} */
 	.dropdownMenu {
 		display: flex;
 		align-items: left;
@@ -171,6 +176,131 @@
 
 			&:hover {
 				color: Main.$blue;
+			}
+		}
+	}
+
+	#navMobile {
+		display: none;
+		#burgerIcon {
+			position: relative;
+			isolation: isolate;
+			z-index: 5;
+			position: absolute;
+			top: 0;
+			right: 20px;
+			height: 30px;
+			transform: translateY(50%);
+			cursor: pointer;
+			.burgerline {
+				fill: Main.$blue;
+			}
+
+			&.burgerIconActive {
+				.burgerline {
+					&.line-1 {
+						width: 75%;
+					}
+					&.line-2 {
+						width: 50%;
+					}
+					&.line-3 {
+						width: 90%;
+					}
+				}
+			}
+		}
+
+		.burgerNav {
+			position: fixed;
+			top: 70px;
+			max-height: calc(100vh - 60px);
+			right: 0px;
+			width: 100vw;
+			max-width: 400px;
+			min-height: 200px;
+			background-color: white;
+			border-radius: 0 0 10px 10px;
+			box-sizing: border-box;
+			transform: translateX(100%);
+			overflow-y: auto;
+
+			.ctaButton {
+				margin: 20px auto;
+				color: white !important;
+				font-size: 1rem !important;
+			}
+
+			&.burgerActive {
+				transform: translateX(0%);
+			}
+
+			.mobileMenuItem {
+				width: 100%;
+
+				&:last-child {
+					.mobileMenuTop {
+						border: none;
+					}
+				}
+
+				&:has(.mobileMenuDropdown.mobileDropActive) {
+					.mobileMenuTop {
+						border: none;
+						.mobileMenuLink {
+							color: Main.$blue;
+						}
+					}
+				}
+
+				.mobileMenuTop {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 16px 0;
+					border-bottom: 1px solid rgb(248, 248, 248);
+
+					.mobileMenuLink {
+						font-size: 1.1rem !important;
+						margin: 0 20px !important;
+					}
+
+					.mobileArrow {
+						height: 9px;
+						padding: 10px 20px;
+						cursor: pointer;
+
+						&.mobileArrowRotate {
+							transform: rotate(180deg);
+							/* filter: grayscale(1) brightness(100); */
+						}
+					}
+				}
+			}
+
+			a {
+				color: black;
+				text-decoration: none;
+			}
+
+			.mobileMenuDropdown {
+				display: flex;
+				flex-direction: column;
+				overflow-y: hidden;
+				height: 0;
+
+				&.mobileDropActive {
+					border-bottom: 1px solid rgb(73, 154, 212);
+					padding: 0 0 10px 0;
+					height: auto;
+				}
+				a {
+					margin: 12px 32px;
+
+					&:hover {
+						color: Main.$blue;
+					}
+				}
 			}
 		}
 	}
@@ -223,6 +353,17 @@
 		z-index: 1;
 		bottom: 0;
 		transition: 450ms ease-in-out;
+		/* overflow-x: hidden; */
+
+		.card--divider {
+			position: absolute;
+			top: 0px;
+			transform: translateY(-50%);
+			left: -10px;
+			width: 120%;
+			isolation: isolate;
+			z-index: -1;
+		}
 	}
 }
 
@@ -416,7 +557,7 @@
 			align-items: center;
 			height: 100%;
 			max-width: 100%;
-			border-right: 1px solid rgb(239, 239, 239);
+			//border-right: 1px solid rgb(239, 239, 239);
 			padding-right: 20px;
 			img {
 				width: 100%;
@@ -464,81 +605,6 @@
 	}
 }
 
-@media screen and (max-width: 800px) {
-	.imagePopup {
-		.popupContent {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: column;
-			gap: 10px;
-			background-color: white;
-			border-radius: 10px;
-			padding: 1rem;
-			box-sizing: border-box;
-			height: auto;
-			max-width: 1200px;
-			margin: 0 50px;
-			margin-top: 70px;
-			position: relative;
-			filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.258));
-			.popupImage {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				margin: 0 auto;
-				height: 100%;
-				border-right: none;
-				border-bottom: 1px solid rgb(239, 239, 239);
-				padding-right: 0;
-				padding-bottom: 10px;
-
-				img {
-					max-width: 100%;
-					height: 100%;
-					max-height: 60vh;
-				}
-			}
-
-			.popupDesc {
-				width: 300px;
-				height: 100%;
-				margin-left: 0;
-				margin-right: auto;
-
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-			}
-
-			.clickableTitle {
-				margin: 0;
-				margin-bottom: 0.3rem;
-				font-weight: 700;
-				font-size: 1.2rem;
-			}
-			.clickableDesc {
-				margin: 0;
-				padding-right: 25px;
-				font-size: 0.9rem;
-			}
-			.popupClose {
-				position: absolute;
-				right: 10px;
-				top: 10px;
-				cursor: pointer;
-				width: 1rem;
-				padding: 10px;
-
-				&:hover {
-					filter: invert(73%) sepia(42%) saturate(5064%) hue-rotate(178deg)
-						brightness(90%) contrast(84%);
-				}
-			}
-		}
-	}
-}
-
 @keyframes calendarSpawn {
 	to {
 		height: 500px;
@@ -554,8 +620,46 @@
 	animation: calendarSpawn 0.4s ease forwards; */
 	overflow: hidden;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	gap: 20px;
+	position: relative;
+
+	.bookingConfirmedOverlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(245, 245, 245);
+		isolation: isolate;
+		z-index: 10;
+
+		.bookingLoading {
+			display: grid;
+			place-items: center;
+			height: 100%;
+		}
+
+		.bookingDone {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+			gap: 1rem;
+
+			b {
+				&:first-of-type {
+					font-size: 1.1rem;
+				}
+			}
+
+			p {
+				margin: 0;
+			}
+		}
+	}
 
 	.bookingCalendar {
 		box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -593,16 +697,44 @@
 			position: relative;
 			padding-left: 1rem;
 			font-style: italic;
+			display: flex;
+			align-items: center;
+			gap: 30px;
 
-			&::before {
-				content: "";
-				position: absolute;
-				left: 0;
-				top: 3px;
-				width: 0.8rem;
-				height: 0.8rem;
-				border-radius: 3px;
-				background-color: rgb(100, 224, 255);
+			div {
+				position: relative;
+				padding-left: 1rem;
+
+				&.high::after {
+					position: absolute;
+					content: "";
+					width: 0.8rem;
+					height: 0.8rem;
+					background-color: rgb(100, 224, 255);
+					border-radius: 3px;
+					top: 2px;
+					left: 0;
+				}
+				&.yellow::after {
+					position: absolute;
+					content: "";
+					width: 0.8rem;
+					height: 0.8rem;
+					background-color: rgb(255, 255, 99);
+					border-radius: 50%;
+					top: 2px;
+					left: 0;
+				}
+				&.red::after {
+					position: absolute;
+					content: "";
+					width: 0.8rem;
+					height: 0.8rem;
+					background-color: rgb(255, 99, 99);
+					border-radius: 50%;
+					top: 2px;
+					left: 0;
+				}
 			}
 		}
 
@@ -633,29 +765,32 @@
 			}
 		}
 
-		.calendarNames {
-			grid-column: span 7;
-			display: grid;
-			grid-template-columns: repeat(7, 1fr);
-			height: fit-content;
-			.calendarDayName {
-				font-size: 0.8rem;
-				text-align: center;
-				margin: 0;
-			}
-		}
-
 		.calendarDate {
-			/* width: 45px;
-		height: 45px; */
 			aspect-ratio: 1;
-			display: grid;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
 			font-size: 0.8rem;
-			place-items: center;
 			background-color: white;
 			cursor: pointer;
 			transition: background-color 0.1s;
 			border-radius: 5px;
+			position: relative;
+			z-index: 1;
+
+			.hasBooked {
+				position: absolute;
+				top: 5%;
+				right: 5%;
+				border-radius: 50%;
+				width: 10px;
+				aspect-ratio: 1;
+				background-color: rgb(255, 255, 99);
+				&.fullyBooked {
+					background-color: rgb(255, 99, 99);
+				}
+			}
 
 			&.invalidDate {
 				background-color: rgb(239, 239, 239);
@@ -724,7 +859,8 @@
 		box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 		border-radius: 10px;
 		position: relative;
-		overflow: hidden;
+		display: flex;
+		flex-direction: column;
 
 		.bookingTimeTitle {
 			font-weight: 600;
@@ -737,6 +873,8 @@
 			text-align: center;
 		}
 		.timeToBook {
+			height: fit-content;
+			display: block;
 			margin: 15px auto;
 			width: 120px;
 			text-align: center;
@@ -752,6 +890,10 @@
 				pointer-events: none;
 				background-color: rgb(239, 239, 239);
 				text-decoration: line-through;
+
+				span {
+					text-decoration: none !important;
+				}
 			}
 
 			&:hover {
@@ -759,27 +901,64 @@
 				color: black;
 			}
 		}
+	}
+	.bookingTimeOverlay {
+		max-width: 200px;
+		height: 100%;
+		width: 100%;
+		background-color: rgb(245, 245, 245);
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+		border-radius: 10px;
+		text-align: center;
+		padding: 0 10px 10px 0;
+		box-sizing: border-box;
 
-		.bookingTimeOverlay {
-			position: absolute;
-			top: 0;
-			left: 0;
-			height: 100%;
-			width: 100%;
-			display: grid;
-			place-items: center;
-			background-color: rgb(245, 245, 245);
+		b {
+			font-size: 1rem;
+		}
+		p {
+			margin-top: 1rem;
+			font-size: 0.8rem;
+		}
+
+		.ctaButton {
+			margin: 30px auto 0 auto;
+		}
+	}
+	.confirmWrap {
+		max-width: 200px;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(245, 245, 245);
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+		border-radius: 10px;
+		position: relative;
+		overflow: hidden;
+
+		p {
+			font-size: 0.8rem;
 			text-align: center;
-			padding: 10px;
-			box-sizing: border-box;
+		}
 
-			p {
-				font-size: 0.9rem;
-			}
+		.confirmBookingTitle {
+			font-weight: 600;
+			text-align: center;
+			margin-bottom: 5px;
+			font-size: 1rem;
+		}
 
-			.ctaButton {
-				margin: 0px 0 auto 0;
-			}
+		.confirmPrice {
+			font-weight: 700;
+		}
+		small {
+			display: block;
+			text-align: center;
+		}
+		padding: 0 10px;
+		box-sizing: border-box;
+
+		.ctaButton {
+			margin: 20px auto 0 auto;
 		}
 	}
 }
@@ -895,109 +1074,20 @@
 	}
 }
 
-@media (max-width: 750px) {
-	.giftcardItem {
-		margin: 0 auto;
-		margin-top: 25px;
-		display: flex;
-		width: 300px;
-		min-height: 120px;
-		justify-content: space-between;
-		align-items: center;
-		gap: 30px;
-		box-sizing: border-box;
-		flex-direction: column;
-
-		/* background-color: rgb(250, 250, 250); */
-		padding: 20px 10px;
-		border-radius: 10px;
-		box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.1);
-
-		.giftcardItemLeft {
-			max-width: 250px;
-
-			.giftName {
-				font-weight: 600;
-				text-align: center;
-				margin-bottom: 30px;
-				margin-top: 0;
-			}
-			.valuePicker {
-				margin: 0 auto;
-			}
-		}
-		.giftcardItemMid {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: column;
-			margin-left: 0;
-			margin-right: 0;
-
-			label {
-				font-size: 13px;
-			}
-			.customGiftValue {
-				display: grid;
-				grid-template-columns: 75% 25%;
-				width: 120px;
-				border: 2px solid rgba(200, 200, 200, 0.3);
-				border-radius: 5px;
-
-				input {
-					border: none;
-					display: grid;
-					place-items: center;
-					text-align: center;
-					font-size: 14px;
-
-					&:focus {
-						outline: none;
-					}
-				}
-
-				p {
-					margin: 0;
-					font-weight: 400;
-					background-color: rgba(200, 200, 200, 0.3);
-					text-align: center;
-					padding: 3px;
-					font-size: 14px;
-				}
-			}
-		}
-		.giftcardItemRight {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			p {
-				text-align: center;
-				margin: 0;
-			}
-			width: 200px;
-		}
-	}
-}
-
 /* Booking item styling */
 .bookingItem {
 	margin-top: 25px;
 	border-radius: 10px;
 	box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.1);
-	height: 120px;
-	transition: 0.4s;
+	/* height: 120px; */
+	transition: 0.3s;
 	overflow-y: hidden;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 
-	&.pickingDate {
-		height: 530px;
-		.bookingStart {
-			border-bottom: 1px solid rgb(233, 233, 233);
-		}
-	}
 	.bookingStart {
+		border-bottom: 1px solid rgb(233, 233, 233);
 		transition: border 0.2s;
 		display: flex;
 		width: 100%;
@@ -1066,13 +1156,21 @@
 			}
 			.ctaButton {
 				margin-left: auto;
+				min-width: 75px;
+				text-align: center;
+
+				&:only-child {
+					margin-right: auto;
+				}
 			}
 			width: 200px;
 		}
 	}
 	.bookingPickDate {
 		display: flex;
+
 		width: 100%;
+		height: fit-content;
 		box-sizing: border-box;
 		padding: 15px;
 	}

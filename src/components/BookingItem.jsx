@@ -9,8 +9,10 @@ export default function BookingItem(data) {
 	const [amount, setAmount] = useState(1);
 	const [price, setPrice] = useState(data.price.low);
 	const [total, setTotal] = useState(data.price.low);
+	const [open, setOpen] = useState(false);
 
-	const [pickDate, setPickDate] = useState(false);
+	const bookingItemRef = useRef(null);
+	const buttonRef = useRef(null);
 
 	useEffect(() => setTotal(price * amount), [amount, price]);
 
@@ -18,12 +20,12 @@ export default function BookingItem(data) {
 		data.sendData(data, amount, total, season);
 	}
 	function handleOnClick() {
-		setPickDate(!pickDate);
+		setOpen(!open);
 	}
 
 	return (
 		<>
-			<div className={pickDate ? "bookingItem pickingDate" : "bookingItem"}>
+			<div ref={bookingItemRef} className={"bookingItem"}>
 				<div className='bookingStart'>
 					<div className='bookingItemLeft'>
 						<p className='bookingName'>
@@ -59,8 +61,11 @@ export default function BookingItem(data) {
 								<p>
 									I alt: <br /> <b>{total} kr.</b>
 								</p>
-								<div onClick={handleOnClick} className='ctaButton'>
-									{pickDate ? "Fortryd" : "Vælg Dato"}
+								<div
+									ref={buttonRef}
+									onClick={handleOnClick}
+									className='ctaButton'>
+									{open ? "Luk" : "Vælg Dato"}
 								</div>
 							</>
 						) : (
@@ -70,9 +75,14 @@ export default function BookingItem(data) {
 						)}
 					</div>
 				</div>
-				<div className='bookingPickDate'>
-					<BookingCalendar />
-				</div>
+				{open && (
+					<div className='bookingPickDate'>
+						<BookingCalendar
+							bookingData={data.bookingTimes}
+							prices={data.price}
+						/>
+					</div>
+				)}
 			</div>
 		</>
 	);

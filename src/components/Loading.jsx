@@ -4,7 +4,7 @@ export default function Loading() {
 	return (
 		<div className='loadingWrapper'>
 			<div className='logoText'>
-				<div class='loader'></div>
+				<div className='loader'></div>
 				<p className='loadingText'>Indlæser...</p>
 			</div>
 		</div>
