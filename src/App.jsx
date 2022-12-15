@@ -45,6 +45,7 @@ import Lektioner from "./pages/Lektioner";
 import Arrangementer from "./pages/Arrangementer";
 import { useEffect, useState } from "react";
 import PageInfo from "./components/PageInfo";
+import Error from "./pages/Error";
 
 export default function App() {
 	const [pageData, setPageData] = useState([]);
@@ -85,6 +86,7 @@ export default function App() {
 			<Nav />
 			<div id='mainContent'>
 				<Routes>
+					<Route path='*' element={<Error />} />
 					<Route path='/' element={<Home />} />
 					<Route path='/kurser' element={<Kurser data={pageData} />} />
 					<Route path='/lektioner' element={<Lektioner data={pageData} />} />
