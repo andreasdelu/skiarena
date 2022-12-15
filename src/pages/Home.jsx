@@ -68,7 +68,7 @@ export default function Home() {
 	}, []);
 
 	function removeThumbnail() {
-		/* thumbnailRef.current.classList.add("removed"); */
+		thumbnailRef.current.classList.add("removed");
 	}
 
 	return (
