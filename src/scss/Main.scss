@@ -208,3 +208,33 @@ ul li::before {
 	position: relative;
 	top: -5px;
 }
+
+details {
+	p {
+		box-sizing: border-box;
+		padding: 0 20px;
+
+		&:last-child {
+			padding-bottom: 20px;
+		}
+	}
+	border-radius: 10px;
+	margin-bottom: 30px;
+}
+
+details[open] {
+	outline: 1px solid $blue;
+	summary {
+		border-radius: 10px 10px 0 0;
+	}
+}
+
+summary {
+	background-color: $blue;
+	color: white;
+	cursor: pointer;
+	font-weight: 500;
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-size: 1.1rem;
+}

@@ -147,33 +147,28 @@ export default function Home() {
 							alt='infograhic slope'
 						/>
 						<div className='info-tekst'>
-							<p>
-								<h1>Skislope</h1>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-								nemo illo ipsum neque ab necessitatibus quos qui sapiente amet
-								obcaecati sit maxime ipsa, vel molestias optio quam impedit
-								distinctio laudantium?
-								<br />
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-								nemo illo ipsum neque ab necessitatibus quos qui sapiente amet
-								obcaecati sit maxime ipsa, vel molestias optio quam impedit
-								distinctio laudantium?
+							<h3 className='info-h3'>Skislope</h3>
+							<p className='info-p'>
+								På vores bånd kan der stå op til 3 personer på ski, eller 2 på
+								snowboard. Skibakken består af et underlag af PP fibre, som er
+								kunstig græs. Når vand er tilføjet på det kunstige græs, fungere
+								det til ski forbrug. Hældningen på skibakken kan ændres alt
+								efter dit niveau, den kan justieres fra 30 til 75 grader.
 							</p>
 						</div>
 					</div>
 					<div className='infographic-bot'>
-						<p>
-							<h1>Fjernbetjening</h1>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-							nemo illo ipsum neque ab necessitatibus quos qui sapiente amet
-							obcaecati sit maxime ipsa, vel molestias optio quam impedit
-							distinctio laudantium?
-							<br />
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-							nemo illo ipsum neque ab necessitatibus quos qui sapiente amet
-							obcaecati sit maxime ipsa, vel molestias optio quam impedit
-							distinctio laudantium?
-						</p>
+						<div className='info-tekst'>
+							<h3 className='info-h3'>Fjernbetjening</h3>
+							<p className='info-p'>
+								Instruktøren har mulighed for at justiere båndet, alt efter
+								hastighed og har muligheden for at stoppe og tænde båndet. Det
+								bruges til at formindske ulykker, men også til at tilpasse ens
+								erfaring, så man kan arbejde sig ligeså stille op. Når du er
+								igang med undervisningen, vil instruktøren stå klar med
+								fjernbetjeningen, så du kun skal fokusere på træningen.
+							</p>
+						</div>
 						<img
 							className='info-bot-img'
 							src={fjernbetjening}
@@ -200,33 +195,35 @@ export default function Home() {
 					<h2 className='sectionTitle'>Åbningstider</h2>
 
 					<div className='aabningSektion'>
-						<div className='tiderWrapper'>
-							<div className='dage'>
-								<p className='aabningText'>
-									Mandag: <br /> Tirsdag: <br /> Onsdag: <br />
-									Torsdag: <br /> Fredag: <br /> Lørdag: <br /> Søndag:
+						<div className='aabningTop'>
+							<div className='tiderWrapper'>
+								<div className='dage'>
+									<p className='aabningText'>
+										Mandag: <br /> Tirsdag: <br /> Onsdag: <br />
+										Torsdag: <br /> Fredag: <br /> Lørdag: <br /> Søndag:
+									</p>
+								</div>
+								<div className='tider'>
+									<p className='aabningText'>
+										14:30 - 20:00 <br /> 14:30 - 20:00 <br /> 14:30 - 20:00{" "}
+										<br />
+										14:30 - 20:00 <br /> 14:30 - 20:00 <br /> 10:00 - 20:00
+										<br /> 10:00 - 20:00
+									</p>
+								</div>
+							</div>
+							<div className='aabningInfo'>
+								<p>
+									<b>Specielle Arrangementer:</b> <br /> Efter aftale
+									<br />
+									<br />
+									<b>Ferier:</b>
+									<br />
+									Ofte har vi forlænget åbningstider i ferierne. <br />
+									Oftest kl. 10-20 alle dage. <br /> Følg med på vores Facebook,
+									<br /> for at se, hvornår vi holder special-åbent
 								</p>
 							</div>
-							<div className='tider'>
-								<p className='aabningText'>
-									14:30 - 20:00 <br /> 14:30 - 20:00 <br /> 14:30 - 20:00 <br />
-									14:30 - 20:00 <br /> 14:30 - 20:00 <br /> 10:00 - 20:00
-									<br /> 10:00 - 20:00
-								</p>
-							</div>
-							<div className='borderLine'></div>
-						</div>
-						<div className='aabningInfo'>
-							<p>
-								<b>Specielle Arrangementer:</b> <br /> Efter aftale
-								<br />
-								<br />
-								<b>Ferier:</b>
-								<br />
-								Ofte har vi forlænget åbningstider i ferierne. <br />
-								Oftest kl. 10-20 alle dage. <br /> Følg med på vores Facebook,
-								<br /> for at se, hvornår vi holder special-åbent
-							</p>
 						</div>
 						<div className='generelInfo'>
 							<p>

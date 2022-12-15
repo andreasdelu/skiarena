@@ -13,6 +13,7 @@ export default function Lektioner({ data }) {
 					<div className='cards-list'>
 						{lektionsData.map((item) => (
 							<Card
+								key={item.id}
 								id={item.id}
 								titel={item.titel}
 								description={item.description}

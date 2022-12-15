@@ -120,74 +120,87 @@
 
 	/* Infographic */
 	.infographic-top {
-		display: grid;
-		grid-template-columns: repeat(2, 50%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		position: relative;
 		max-width: 1200px;
 		height: 100%;
-		place-items: center;
 		box-sizing: border-box;
 		padding: 0 50px;
 		margin: 1vw auto 0 auto;
 		color: white;
+		gap: 40px;
 
-		p {
+		.info-p {
 			max-width: 500px;
 		}
 
-		.info-top-img {
-			transition: 0.5s all ease-in-out;
-			width: 400px;
-			&:hover {
-				transform: scale(1.1);
-			}
+		.info-h3 {
+			font-size: 28px;
+		}
+	}
+	.info-top-img {
+		transition: 0.5s all ease-in-out;
+		width: 350px;
+		&:hover {
+			transform: scale(1.1);
 		}
 	}
 
 	.infographic-bot {
-		display: grid;
-		grid-template-columns: repeat(2, 50%);
+		gap: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		position: relative;
 		max-width: 1200px;
 		height: 100%;
-		place-items: center;
 		box-sizing: border-box;
 		padding: 0 50px;
 		margin: 1vw auto 0 auto;
 		color: white;
 
-		p {
+		.info-p {
 			max-width: 500px;
+		}
+
+		.info-h3 {
+			font-size: 28px;
 		}
 
 		.info-bot-img {
 			transition: 0.5s all ease-in-out;
 			width: 200px;
 			&:hover {
-				transform: scale(1.2);
+				transform: scale(1.1);
 			}
 		}
 	}
 
 	/* Aabningstider */
 	.aabningSektion {
-		display: grid;
-		/* grid-template-columns: 1fr 1fr; */
-		grid-template-columns: repeat(2, 1fr);
+		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-direction: column;
 		color: white;
+		.aabningTop {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0 auto;
+		}
 		.tiderWrapper {
 			display: flex;
 			margin-left: auto;
-			margin-right: 0px;
+			padding-right: 50px;
+			width: 50%;
+			border-right: 1px solid white;
+			justify-content: flex-end;
 			.tider {
-				margin-right: 50px;
+				margin-right: 0px;
 				margin-left: 30px;
-			}
-
-			.borderLine {
-				border-right: 1px solid white;
 			}
 
 			.dage,
@@ -199,6 +212,7 @@
 		}
 
 		.aabningInfo {
+			width: 50%;
 			margin-left: 50px;
 		}
 
@@ -300,6 +314,11 @@
 			}
 		}
 	}
+}
+
+.contactText {
+	max-width: 800px;
+	margin: 0px auto 50px auto;
 }
 
 #contactWrap {
@@ -606,6 +625,7 @@
 	.cards-list {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-auto-flow: row;
 	}
 }
 

@@ -28,15 +28,14 @@ export default function ImageClickable({ src, title = "", desc = "" }) {
 				<div className='imagePopup'>
 					<div onClick={togglePopup} className='popupBackground'></div>
 					<div className='popupContent'>
+						<div className='closeBG'></div>
 						<img
 							onClick={togglePopup}
 							className='popupClose'
 							src={close}
 							alt='close'
 						/>
-						<div className='popupImage'>
-							<img src={src} alt={title} />
-						</div>
+						<img className='popupImage' src={src} alt={title} />
 						{/* <div className='popupDesc'>
 							<p className='clickableTitle'>{title}</p>
 							<p className='clickableDesc'>{desc}</p>

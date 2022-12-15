@@ -3,6 +3,18 @@ import React from "react";
 export default function Kontakt() {
 	return (
 		<>
+			<p className='contactText'>
+				Den nemmeste måde at kontakte os på er, at sende en besked via
+				nedenstående kontakt-formular. <br /> Telefonen har begrænset
+				åbningstider (åben fra kl. 16 til 21) - så ved at skrive til os via
+				kontaktformularen, ser vi det hurtigst. <br /> <br /> Har du en
+				forespørgsel, der falder udenfor vores information her på siden, er du
+				altid velkommen til at kontakte på e-mail. Husk at angive dit
+				telefonnummer og mail for hurtigt svar. <br /> <br /> E-mail:
+				<a href='mailto:info@skiarena.dk'>info@skiarena.dk</a>
+				<br /> <br /> Tlf.: <a href='tel:25948777'>25 94 87 77</a> (Vi modtager
+				ikke sms)
+			</p>
 			<div id='contactWrap'>
 				<form /* onSubmit={handleContactSubmit} */ id='contactForm'>
 					<h3 style={{ margin: 0 }}>Send os en besked</h3>

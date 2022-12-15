@@ -197,7 +197,7 @@ export default function Nav() {
 								<NavLink to={"/faq"}>FAQ</NavLink>
 								<NavLink to={"/kontakt"}>Kontakt</NavLink>
 								<NavLink to={"/job"}>Job</NavLink>
-								<NavLink to={"/presse"}>Presse</NavLink>
+								{/* <NavLink to={"/presse"}>Presse</NavLink> */}
 								<NavLink to={"/betingelser"}>Betingelser</NavLink>
 							</div>
 						)}
@@ -383,7 +383,7 @@ export default function Nav() {
 								<NavLink to={"/faq"}>FAQ</NavLink>
 								<NavLink to={"/kontakt"}>Kontakt</NavLink>
 								<NavLink to={"/job"}>Job</NavLink>
-								<NavLink to={"/presse"}>Presse</NavLink>
+								{/* <NavLink to={"/presse"}>Presse</NavLink> */}
 								<NavLink to={"/betingelser"}>Betingelser</NavLink>
 							</div>
 						</div>

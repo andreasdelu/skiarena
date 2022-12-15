@@ -13,6 +13,7 @@ export default function Kurser({ data }) {
 					<div className='cards-list'>
 						{kursusData.map((item) => (
 							<Card
+								key={item.id}
 								id={item.id}
 								titel={item.titel}
 								description={item.description}
