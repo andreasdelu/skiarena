@@ -12,11 +12,25 @@
 		isolation: isolate;
 		z-index: 0;
 
-		#heroVideo,
-		#heroImage {
+		#heroVideo {
 			height: 100%;
 			object-fit: cover;
 			width: 100%;
+			position: relative;
+		}
+		#heroImage {
+			position: absolute;
+			top: -5%;
+			left: -5%;
+			height: 110%;
+			width: 110%;
+			object-fit: cover;
+			filter: blur(5px);
+			transition: opacity 0.5s;
+
+			&.removed {
+				opacity: 0;
+			}
 		}
 
 		.videoOverlay {

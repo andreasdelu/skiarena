@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import video from "../assets/videos/SkiArena.mp4";
 import thumbnail from "../assets/images/thumbnail.png";
@@ -29,6 +29,8 @@ export default function Home() {
 	}
 
 	const [featuredImages, setFeaturedImages] = useState([]);
+
+	const thumbnailRef = useRef(null);
 
 	async function getData() {
 		const res = await fetch(
@@ -77,18 +79,30 @@ export default function Home() {
 					loop>
 					<source src={video} />
 				</video>
-				{!videoReady && (
+				{videoReady && (
 					<img id='heroImage' src={thumbnail} alt='video thumbnail' />
 				)}
 			</>
 		);
 	}
 
+	function removeThumbnail() {
+		thumbnailRef.current.classList.add("removed");
+	}
+
 	return (
 		<>
 			<div id='homeWrap'>
 				<div id='homeHero'>
-					<HomeVideo />
+					<video onCanPlay={removeThumbnail} id='heroVideo' autoPlay muted loop>
+						<source src={video} />
+					</video>
+					<img
+						ref={thumbnailRef}
+						id='heroImage'
+						src={thumbnail}
+						alt='video thumbnail'
+					/>
 					<div className='videoOverlay'>
 						<div className='overlayContent'>
 							<div className='overlayLeft'>
