@@ -67,27 +67,8 @@ export default function Home() {
 		}; */
 	}, []);
 
-	function HomeVideo() {
-		const [videoReady, setVideoReady] = useState(false);
-		return (
-			<>
-				<video
-					onCanPlay={() => setVideoReady(true)}
-					id='heroVideo'
-					autoPlay
-					muted
-					loop>
-					<source src={video} />
-				</video>
-				{videoReady && (
-					<img id='heroImage' src={thumbnail} alt='video thumbnail' />
-				)}
-			</>
-		);
-	}
-
 	function removeThumbnail() {
-		thumbnailRef.current.classList.add("removed");
+		/* thumbnailRef.current.classList.add("removed"); */
 	}
 
 	return (
