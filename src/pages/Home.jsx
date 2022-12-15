@@ -52,19 +52,6 @@ export default function Home() {
 
 	useEffect(() => {
 		getData();
-
-		/* const script = document.createElement("script");
-
-		script.src = "https://consent.cookiebot.com/uc.js";
-		script.dataset.cbid = "e471a62b-6871-470d-8923-b25ee5b2691e";
-		script.dataset.blockingmode = "auto";
-		script.id = "Cookiebot";
-
-		document.body.appendChild(script);
-
-		return () => {
-			document.body.removeChild(script);
-		}; */
 	}, []);
 
 	function removeThumbnail() {
