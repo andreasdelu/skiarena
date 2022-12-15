@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 import video from "../assets/videos/SkiArena.mp4";
+import thumbnail from "../assets/images/thumbnail.png";
 import logo from "../assets/images/skiarenalogo-white.svg";
 import divider from "../assets/images/divider.svg";
 import bluebg from "../assets/images/bluebg.svg";
 import { Link } from "react-router-dom";
-import Card from "../components/Card";
-
-import ski from "../assets/images/ski-placeholder.jpeg";
-import ski2 from "../assets/images/ski-placeholder-2.jpeg";
 import ImageClickable from "../components/ImageClickable";
 
 import skislope from "../assets/images/skislope-donee.svg";
@@ -53,15 +50,45 @@ export default function Home() {
 
 	useEffect(() => {
 		getData();
+
+		/* const script = document.createElement("script");
+
+		script.src = "https://consent.cookiebot.com/uc.js";
+		script.dataset.cbid = "e471a62b-6871-470d-8923-b25ee5b2691e";
+		script.dataset.blockingmode = "auto";
+		script.id = "Cookiebot";
+
+		document.body.appendChild(script);
+
+		return () => {
+			document.body.removeChild(script);
+		}; */
 	}, []);
+
+	function HomeVideo() {
+		const [videoReady, setVideoReady] = useState(false);
+		return (
+			<>
+				<video
+					onCanPlay={() => setVideoReady(true)}
+					id='heroVideo'
+					autoPlay
+					muted
+					loop>
+					<source src={video} />
+				</video>
+				{!videoReady && (
+					<img id='heroImage' src={thumbnail} alt='video thumbnail' />
+				)}
+			</>
+		);
+	}
 
 	return (
 		<>
 			<div id='homeWrap'>
 				<div id='homeHero'>
-					<video id='heroVideo' autoPlay muted loop>
-						<source src={video} />
-					</video>
+					<HomeVideo />
 					<div className='videoOverlay'>
 						<div className='overlayContent'>
 							<div className='overlayLeft'>

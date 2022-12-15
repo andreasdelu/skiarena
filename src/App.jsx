@@ -46,13 +46,14 @@ import Arrangementer from "./pages/Arrangementer";
 import { useEffect, useState } from "react";
 import PageInfo from "./components/PageInfo";
 import Error from "./pages/Error";
+import CookieBot from "react-cookiebot";
 
 export default function App() {
 	const [pageData, setPageData] = useState([]);
 
 	async function getData() {
 		const res = await fetch(
-			"https://skiarena-admin.delu.dk/wp-json/wp/v2/posts?per_page=100&_embed"
+			"https://skiarena-admin.delu.dk/wp-json/wp/v2/posts?per_page=20&_embed"
 		);
 		const data = await res.json();
 
@@ -84,6 +85,9 @@ export default function App() {
 		<BrowserRouter>
 			<ScrollToTop />
 			<Nav />
+			<CookieBot
+				domainGroupId={`${process.env.REACT_APP_COOKIEBOT_DOMAIN_GROUP_ID}`}
+			/>
 			<div id='mainContent'>
 				<Routes>
 					<Route path='*' element={<Error />} />
