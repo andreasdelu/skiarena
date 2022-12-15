@@ -170,7 +170,7 @@ export default function Home() {
 						<div className='info-tekst'>
 							<h3 className='info-h3'>Fjernbetjening</h3>
 							<p className='info-p'>
-								Instruktøren har mulighed for at justiere båndet, alt efter
+								Instruktøren har mulighed for at justere båndet, alt efter
 								hastighed og har muligheden for at stoppe og tænde båndet. Det
 								bruges til at formindske ulykker, men også til at tilpasse ens
 								erfaring, så man kan arbejde sig ligeså stille op. Når du er
