@@ -101,13 +101,17 @@ export default function Nav() {
 		dropdown(!value);
 	}
 
+	function scrollToTop() {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	}
+
 	return (
 		<>
 			<nav
 				ref={navRef}
 				className={location.pathname === "/" ? "onTop" : ""}
 				id='navigation'>
-				<Link id='logoWrapper' to={"/"}>
+				<Link onClick={scrollToTop} id='logoWrapper' to={"/"}>
 					<img
 						ref={logoRef}
 						id='logoNav'
