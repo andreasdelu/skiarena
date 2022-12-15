@@ -1,54 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function Cookies() {
+	const declarationRef = useRef(null);
+	useEffect(() => {
+		const ref = declarationRef.current;
+		const script = document.createElement("script");
+
+		script.src =
+			"https://consent.cookiebot.com/e471a62b-6871-470d-8923-b25ee5b2691e/cd.js";
+		script.async = true;
+
+		if (ref.innerHTML === "") {
+			ref.appendChild(script);
+		}
+	}, []);
 	return (
 		<>
 			<div id='cookieWrap'>
 				<h1 className='pageTitle'>Cookie- og privatlivspolitik</h1>
 				<h3>Introduktion</h3>
-				Når du besøger vores website indsamles der oplysninger om dig, som
-				bruges til at tilpasse og forbedre vores indhold og til at øge værdien
-				af de annoncer, der vises på siden. Hvis du ikke ønsker, at der
-				indsamles oplysninger, bør du slette dine cookies (
-				<a href='http://minecookies.org/cookiehandtering'>se vejledning</a>) og
-				undlade videre brug af websitet. Nedenfor har vi uddybet, hvilke
-				informationer der indsamles, deres formål og hvilke tredjeparter, der
-				har adgang til dem.
-				<h3>Cookies</h3>
-				Websitet anvender ”cookies”, der er en tekstfil, som gemmes på din
-				computer, mobil el. tilsvarende med det formål at genkende den, huske
-				indstillinger, udføre statistik og målrette annoncer. Cookies kan ikke
-				indeholde skadelig kode som f.eks. virus. <br /> <br /> Det er muligt at
-				slette eller blokere for cookies. Se vejledning:{" "}
-				<a href='http://minecookies.org/cookiehandtering'>
-					http://minecookies.org/cookiehandtering
-				</a>{" "}
-				<br /> <br />
-				Hvis du sletter eller blokerer cookies vil annoncer kunne blive mindre
-				relevante for dig og optræde hyppigere. Du kan desuden risikere at
-				websitet ikke fungerer optimalt samt at der er indhold, du ikke kan få
-				adgang til. <br /> <br /> Websitet indeholder cookies fra tredjeparter
-				som angivet herunder Denne hjemmeside bruger cookies. Vi bruger cookies
-				til at tilpasse vores indhold og annoncer, til at vise dig funktioner
-				til sociale medier og til at analysere vores trafik. Vi deler også
-				oplysninger om din brug af vores website med vores partnere inden for
-				sociale medier, annonceringspartnere og analysepartnere. Vores partnere
-				kan kombinere disse data med andre oplysninger, du har givet dem, eller
-				som de har indsamlet fra din brug af deres tjenester. Du samtykker til
-				vores cookies, hvis du fortsætter med at anvende vores hjemmeside.{" "}
-				<br /> <br />
-				Cookies er små tekstfiler, som kan bruges af websteder til at gøre en
-				brugers oplevelse mere effektiv. <br /> <br /> Loven fastslår, at vi kan
-				gemme cookies på din enhed, hvis de er strengt nødvendige for at sikre
-				leveringen af den tjeneste, du udtrykkeligt har anmodet om at bruge. For
-				alle andre typer cookies skal vi indhente dit samtykke. <br /> <br />{" "}
-				Dette websted bruger forskellige typer af cookies. Nogle cookies sættes
-				af tredjeparts tjenester, der vises på vores sider. <br /> <br /> Du kan
-				til enhver tid ændre eller tilbagetrække dit samtykke fra
-				Cookiedeklarationen på vores hjemmeside. <br /> <br />
-				Få mere at vide om, hvem vi er, hvordan du kan kontakte os, og hvordan
-				vi behandler persondata i vores Privatlivspolitik. <br /> <br /> Dit
-				samtykke gælder for følgende domæner: skiarena.dk <br /> <br />
+				<div id='CookieDeclaration' ref={declarationRef}></div>
 				<h2>Personoplysninger</h2>
 				<h3>Generelt</h3>
 				Personoplysninger er alle slags informationer, der i et eller andet
