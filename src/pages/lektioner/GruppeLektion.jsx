@@ -1,9 +1,5 @@
 import React from "react";
 
-import PageInfo from "../../components/PageInfo";
-
-import image from "../../assets/images/BasisKursus.jpeg";
-import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 export default function GruppeLektion() {

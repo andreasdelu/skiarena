@@ -1,8 +1,5 @@
 import React from "react";
 
-import image from "../../assets/images/BasisKursus.jpeg";
-import PageInfo from "../../components/PageInfo";
-
 export default function MiniKursus() {
 	return (
 		<>

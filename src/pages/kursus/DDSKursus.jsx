@@ -1,6 +1,4 @@
 import React from "react";
-import PageInfo from "../../components/PageInfo";
-import image from "../../assets/images/dds.png";
 
 export default function DDSKursus() {
 	return (

@@ -1,7 +1,4 @@
 import React from "react";
-import PageInfo from "../../components/PageInfo";
-
-import image from "../../assets/images/BasisKursus.jpeg";
 
 export default function TeknikKursus() {
 	return (

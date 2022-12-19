@@ -1,5 +1,4 @@
 import React from "react";
-import PageInfo from "../../components/PageInfo";
 
 export default function BasisKursus() {
 	return (

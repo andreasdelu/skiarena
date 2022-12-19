@@ -27,10 +27,9 @@ export default function Home() {
 		console.log(e.target.contactCompany.value);
 		console.log(e.target.contactMessage.value);
 	}
+	const thumbnailRef = useRef(null);
 
 	const [featuredImages, setFeaturedImages] = useState([]);
-
-	const thumbnailRef = useRef(null);
 
 	async function getData() {
 		const res = await fetch(
@@ -52,19 +51,29 @@ export default function Home() {
 
 	useEffect(() => {
 		getData();
+		loadHeroVideo();
 	}, []);
 
 	function removeThumbnail() {
 		thumbnailRef.current.classList.add("removed");
 	}
 
+	function loadHeroVideo() {
+		document.getElementById("heroVideo").src = video;
+	}
+
 	return (
 		<>
 			<div id='homeWrap'>
 				<div id='homeHero'>
-					<video onCanPlay={removeThumbnail} id='heroVideo' autoPlay muted loop>
-						<source src={video} />
-					</video>
+					<video
+						src=''
+						onCanPlay={removeThumbnail}
+						id='heroVideo'
+						autoPlay
+						muted
+						loop
+					/>
 					<img
 						ref={thumbnailRef}
 						id='heroImage'
